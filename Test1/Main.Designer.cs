@@ -34,9 +34,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(676, 273);
+            this.BackColor = System.Drawing.SystemColors.ControlText;
+            this.ClientSize = new System.Drawing.Size(663, 542);
             this.Name = "Main";
             this.Text = "Main";
+            this.TransparencyKey = System.Drawing.Color.DarkMagenta;
             this.ResumeLayout(false);
 
         }

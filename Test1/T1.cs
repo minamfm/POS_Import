@@ -41,7 +41,6 @@ namespace Test1
             string query = "Select * From Users WHERE usern = '"+textBox1.Text+"'and passw='" + textBox2.Text +"'";
             SqlCommand cmdq = new SqlCommand(query, conn);
             SqlDataReader rdr;
-            SqlDataReader rdr2;
             
             try
             {
@@ -54,19 +53,10 @@ namespace Test1
                     this.Hide();
                        Main mainmenu = new Main();
                        mainmenu.Show();
-                    String x = rdr.GetString(2);
-
-                    // String y = rdr["passw"].ToString();
-                    Console.WriteLine(x);
-
-                    //i++;
-
-                    //if (x == textBox1.Text )
-                    //{
-                    //    this.Hide();
-                    //    Main mainmenu = new Main();
-                    //    mainmenu.Show();
-                    //}
+                    int id = (Int32)rdr.GetValue(0);
+                    String x = rdr.GetString(1);
+                     String y = rdr["passw"].ToString();
+                    Console.WriteLine(id +x + y);
                 }
 
                 // Call Close when done reading.
@@ -77,7 +67,10 @@ namespace Test1
             {
                 MessageBox.Show("no");
             }
-
+            finally
+            {
+                conn.Close();
+            }
 
             //    SqlDataAdapter sd = new SqlDataAdapter("Select Count(*) From Users Where usern = '"+ textBox1.Text + " ' and passw= ' " + textBox2.Text + " ' ", conn);
             //    DataTable dt = new DataTable();
