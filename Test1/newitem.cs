@@ -22,8 +22,8 @@ namespace Test1
         private void button1_Click(object sender, EventArgs e)
         {
            SqlConnection conn = new SqlConnection(util.GetConnectionString());
-
-            string query = "Select * From Item WHERE Code = '" + textBox1.Text + "'and name='" + textBox2.Text + " ' and supllier='" + textBox5.Text + "'";
+            List<long> item_codes = new List<long>();
+            string query = "Select * From Item";
             SqlCommand cmdq = new SqlCommand(query, conn);
             SqlDataReader rdr;
             try {
@@ -31,9 +31,16 @@ namespace Test1
                 rdr = cmdq.ExecuteReader();
                 while (rdr.Read())
                 {
-                    MessageBox.Show("already in ");
+                    item_codes.Add(rdr.GetInt32(0));
                 }
                 rdr.Close();
+
+                if (item_codes.Contains(Convert.ToInt64(textBox1.Text)))
+                {
+                    MessageBox.Show("item metkarara");
+                    return;
+                }
+            
             }
             catch {
                 MessageBox.Show("adding!");
@@ -44,7 +51,7 @@ namespace Test1
             try
             {
                 
-
+                //TODO: Sanity checks on these things
                 MessageBox.Show("still Adding");
                 int cde = Int32.Parse(textBox1.Text);
                 int qty = Int32.Parse(textBox3.Text);
@@ -53,7 +60,8 @@ namespace Test1
 
                 SqlCommand objcmd = new SqlCommand("Insert into Item (Code,name,supplier,type,qty,qtyunit,price) Values('" + cde + "','" + textBox2.Text + "','" + textBox5.Text + "','" + textBox7.Text + "','" + qty + "','" + qtyunit + "','" + price + "')", conn);
                 MessageBox.Show("Query insert tamam");
-                conn.Open();
+              
+              //  conn.Open();
                 objcmd.ExecuteNonQuery();
 
 
