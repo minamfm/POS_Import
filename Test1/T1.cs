@@ -56,7 +56,6 @@ namespace Test1
                 Console.WriteLine("tamam");
                 while (rdr.Read())
                 {
-
                     int id = (Int32)rdr.GetValue(0);
                     x = rdr.GetString(1);
                     y = rdr["passw"].ToString();
