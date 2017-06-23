@@ -13,6 +13,7 @@ namespace Test1
 {
     public partial class newitem : Form
     {
+        Test1.Utilities util = new Test1.Utilities();
         public newitem()
         {
             InitializeComponent();
@@ -20,45 +21,51 @@ namespace Test1
 
         private void button1_Click(object sender, EventArgs e)
         {
-           SqlConnection conn = new SqlConnection(@" Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\Ramez\Documents\Visual Studio 2015\Projects\Test1\Test1\DB1TEST.mdf ; Integrated Security = True; Connect Timeout = 30 ");
+           SqlConnection conn = new SqlConnection(util.GetConnectionString());
 
             string query = "Select * From Item WHERE Code = '" + textBox1.Text + "'and name='" + textBox2.Text + " ' and supllier='" + textBox5.Text + "'";
             SqlCommand cmdq = new SqlCommand(query, conn);
             SqlDataReader rdr;
+            try {
+                conn.Open();
+                rdr = cmdq.ExecuteReader();
+                while (rdr.Read())
+                {
+                    MessageBox.Show("already in ");
+                }
+                rdr.Close();
+            }
+            catch {
+                MessageBox.Show("adding!");
+                conn.Close();
+            }
+
 
             try
             {
-                conn.Open();
+                
 
-                MessageBox.Show("Adding");
+                MessageBox.Show("still Adding");
                 int cde = Int32.Parse(textBox1.Text);
                 int qty = Int32.Parse(textBox3.Text);
                 int qtyunit = Int32.Parse(textBox4.Text);
                 float price = float.Parse(textBox6.Text);
 
                 SqlCommand objcmd = new SqlCommand("Insert into Item (Code,name,supplier,type,qty,qtyunit,price) Values('" + cde + "','" + textBox2.Text + "','" + textBox5.Text + "','" + textBox7.Text + "','" + qty + "','" + qtyunit + "','" + price + "')", conn);
-
+                MessageBox.Show("Query insert tamam");
+                conn.Open();
                 objcmd.ExecuteNonQuery();
 
-                Console.WriteLine("connected");
-                rdr = cmdq.ExecuteReader();
-               
+
+                MessageBox.Show("ADDED");
 
 
-                    Console.WriteLine("item ");
-                    while (rdr.Read())
-                    {
-                        MessageBox.Show("already in ");
-                    }
 
-                    rdr.Close();
-                
-              
             }
 
             catch
             {
-              
+                MessageBox.Show("fail");
                 //using (SqlCommand cmd =
                 //new SqlCommand("INSERT INTO Item VALUES(" + "@Code,@name , @supplier, @type,@qty,@qtyunit , @price)", conn))
                 //{

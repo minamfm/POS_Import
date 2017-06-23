@@ -37,3 +37,4 @@ C:\POS_main\POS_Import\Test1\obj\Debug\Test1.T1.resources
 C:\POS_main\POS_Import\Test1\obj\Debug\Test1.Properties.Resources.resources
 C:\POS_main\POS_Import\Test1\obj\Debug\Test1.csproj.GenerateResource.Cache
 C:\POS_main\POS_Import\Test1\obj\Debug\Test1.New_user.resources
+C:\Users\Ramez\Documents\GitShit\New Repo\POS_Import\Test1\obj\Debug\Test1.New_user.resources
