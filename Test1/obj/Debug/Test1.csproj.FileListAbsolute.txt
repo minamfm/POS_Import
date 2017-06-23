@@ -23,3 +23,17 @@ C:\Users\Ramez\Documents\GitShit\New Repo\POS_Import\Test1\obj\Debug\Test1.T1.re
 C:\Users\Ramez\Documents\GitShit\New Repo\POS_Import\Test1\obj\Debug\Test1.Properties.Resources.resources
 C:\Users\Ramez\Documents\GitShit\New Repo\POS_Import\Test1\obj\Debug\Test1.csproj.GenerateResource.Cache
 C:\Users\Ramez\Documents\GitShit\New Repo\POS_Import\Test1\obj\Debug\Test1.newitem.resources
+C:\POS_main\POS_Import\Test1\bin\Debug\Test1.exe.config
+C:\POS_main\POS_Import\Test1\obj\Debug\Test1.exe
+C:\POS_main\POS_Import\Test1\obj\Debug\Test1.pdb
+C:\POS_main\POS_Import\Test1\bin\Debug\DB1TEST.mdf
+C:\POS_main\POS_Import\Test1\bin\Debug\DB1TEST_log.ldf
+C:\POS_main\POS_Import\Test1\bin\Debug\Test1.exe
+C:\POS_main\POS_Import\Test1\bin\Debug\Test1.pdb
+C:\POS_main\POS_Import\Test1\obj\Debug\Test1.csprojResolveAssemblyReference.cache
+C:\POS_main\POS_Import\Test1\obj\Debug\Test1.Main.resources
+C:\POS_main\POS_Import\Test1\obj\Debug\Test1.newitem.resources
+C:\POS_main\POS_Import\Test1\obj\Debug\Test1.T1.resources
+C:\POS_main\POS_Import\Test1\obj\Debug\Test1.Properties.Resources.resources
+C:\POS_main\POS_Import\Test1\obj\Debug\Test1.csproj.GenerateResource.Cache
+C:\POS_main\POS_Import\Test1\obj\Debug\Test1.New_user.resources
