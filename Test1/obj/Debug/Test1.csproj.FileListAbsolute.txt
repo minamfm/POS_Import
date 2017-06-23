@@ -1,0 +1,12 @@
+c:\users\ramez\documents\visual studio 2015\Projects\Test1\Test1\bin\Debug\Test1.exe.config
+c:\users\ramez\documents\visual studio 2015\Projects\Test1\Test1\bin\Debug\DB1TEST.mdf
+c:\users\ramez\documents\visual studio 2015\Projects\Test1\Test1\bin\Debug\DB1TEST_log.ldf
+c:\users\ramez\documents\visual studio 2015\Projects\Test1\Test1\bin\Debug\Test1.exe
+c:\users\ramez\documents\visual studio 2015\Projects\Test1\Test1\bin\Debug\Test1.pdb
+c:\users\ramez\documents\visual studio 2015\Projects\Test1\Test1\obj\Debug\Test1.csprojResolveAssemblyReference.cache
+c:\users\ramez\documents\visual studio 2015\Projects\Test1\Test1\obj\Debug\Test1.T1.resources
+c:\users\ramez\documents\visual studio 2015\Projects\Test1\Test1\obj\Debug\Test1.Properties.Resources.resources
+c:\users\ramez\documents\visual studio 2015\Projects\Test1\Test1\obj\Debug\Test1.csproj.GenerateResource.Cache
+c:\users\ramez\documents\visual studio 2015\Projects\Test1\Test1\obj\Debug\Test1.exe
+c:\users\ramez\documents\visual studio 2015\Projects\Test1\Test1\obj\Debug\Test1.pdb
+c:\users\ramez\documents\visual studio 2015\Projects\Test1\Test1\obj\Debug\Test1.Main.resources
