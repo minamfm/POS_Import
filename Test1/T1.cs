@@ -42,8 +42,13 @@ namespace Test1
         private void button1_Click(object sender, EventArgs e)
         {
 
-            SqlConnection conn = new SqlConnection(@" Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\Ramez\Documents\Visual Studio 2015\Projects\Test1\Test1\DB1TEST.mdf ; Integrated Security = True; Connect Timeout = 30 ");
-
+            string current_dir = System.Reflection.Assembly.GetExecutingAssembly().Location;//because the database is currenly
+            for (int i = 0; i<3; i++)
+            {
+                current_dir = current_dir.Substring(0, current_dir.LastIndexOf('\\'));
+            }
+    
+            SqlConnection conn = new SqlConnection(@" Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = " + current_dir + @"\DB1TEST.mdf ; Integrated Security = True; Connect Timeout = 30 ");
             string query = "Select * From Users WHERE usern = '"+textBox1.Text+"'and passw='" + textBox2.Text +"'";
             SqlCommand cmdq = new SqlCommand(query, conn);
             SqlDataReader rdr;
