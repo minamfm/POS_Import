@@ -67,6 +67,12 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="newitem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newitem.Designer.cs">
+      <DependentUpon>newitem.cs</DependentUpon>
+    </Compile>
     <Compile Include="T1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newitem.resx">
+      <DependentUpon>newitem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="T1.resx">
       <DependentUpon>T1.cs</DependentUpon>

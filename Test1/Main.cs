@@ -12,9 +12,24 @@ namespace Test1
 {
     public partial class Main : Form
     {
-        public Main()
+
+        public Main(int id ,String x)
         {
+            String idd = id.ToString();
             InitializeComponent();
+            this.label1.Text= idd + "  " + x;
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            newitem newit1 = new newitem();
+            newit1.Show();
         }
     }
 }

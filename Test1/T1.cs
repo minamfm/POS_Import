@@ -11,8 +11,14 @@ using System.Data.SqlClient;
 
 namespace Test1
 {
+
     public partial class T1 : Form
     {
+
+
+        String x ,y ;
+      
+
         public T1()
         {
             InitializeComponent();
@@ -50,12 +56,15 @@ namespace Test1
                 Console.WriteLine("tamam");
                 while (rdr.Read())
                 {
-                    this.Hide();
-                       Main mainmenu = new Main();
-                       mainmenu.Show();
+
                     int id = (Int32)rdr.GetValue(0);
-                    String x = rdr.GetString(1);
-                     String y = rdr["passw"].ToString();
+                    x = rdr.GetString(1);
+                    y = rdr["passw"].ToString();
+
+                    this.Hide();
+                       Main mainmenu = new Main(id, x);
+                       mainmenu.Show();
+                    
                     Console.WriteLine(id +x + y);
                 }
 
