@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace Test1
 {
     public partial class Main : Form
     {
+        Test1.Utilities util = new Test1.Utilities();
 
         public Main(int id ,String x)
         {
@@ -31,5 +33,45 @@ namespace Test1
             newitem newit1 = new newitem();
             newit1.Show();
         }
+        
+        
+        
+        //Inventory
+        private void button3_Click(object sender, EventArgs e)
+
+        {
+
+
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+
+            SqlConnection conn = new SqlConnection(util.GetConnectionString());
+            List<long> item_codes = new List<long>();
+            List<String> item_name = new List<String>();
+            List<String> item_suplier = new List<String>();
+            List<String> item_type = new List<string>();
+            List<long> item_qty = new List<long>();
+            List<long> item_qtyunit = new List<long>();
+            List<long> item_price = new List<long>();
+
+            string query = "Select * From Item";
+            SqlDataAdapter sda = new SqlDataAdapter(query, conn);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            try
+            {
+                conn.Open();
+
+                Inventorygrid invent = new Inventorygrid( dt);
+                invent.Show();
+
+            }
+            catch
+            {
+                conn.Close();
+            }
+
+        } 
+
     }
 }
+
