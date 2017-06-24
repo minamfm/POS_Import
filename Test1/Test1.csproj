@@ -61,6 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomersAndRepresentatives.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomersAndRepresentatives.Designer.cs">
+      <DependentUpon>CustomersAndRepresentatives.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inventorygrid.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CustomersAndRepresentatives.resx">
+      <DependentUpon>CustomersAndRepresentatives.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inventorygrid.resx">
       <DependentUpon>Inventorygrid.cs</DependentUpon>
     </EmbeddedResource>

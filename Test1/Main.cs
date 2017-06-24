@@ -70,8 +70,13 @@ namespace Test1
                 conn.Close();
             }
 
-        } 
+        }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            CustomersAndRepresentatives cust = new CustomersAndRepresentatives();
+            cust.Show();
+        }
     }
 }
 
