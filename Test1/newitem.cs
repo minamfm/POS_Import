@@ -134,8 +134,8 @@ void AutoCompleteText()
                     int qty = Int32.Parse(textBox3.Text);
                     int qtyunit = Int32.Parse(textBox4.Text);
                     float price = float.Parse(textBox6.Text);
-
-                    SqlCommand objcmd = new SqlCommand("Insert into Item (Code,name,supplier,type,qty,qtyunit,price) Values('" + cde + "','" + textBox2.Text + "','" + textBox5.Text + "','" + textBox7.Text + "','" + qty + "','" + qtyunit + "','" + price + "')", conn);
+                    //arabic solved :D !!
+                    SqlCommand objcmd = new SqlCommand("Insert into Item (Code,name,supplier,type,qty,qtyunit,price) Values( '" +cde +" ',N'" + textBox2.Text + "',N'" + textBox5.Text + "',N'" + textBox7.Text + "','" + qty + "','" + qtyunit + "','" + price + "')", conn);
                     MessageBox.Show("Query insert tamam");
 
                     // conn.Open();
