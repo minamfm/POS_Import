@@ -12,10 +12,10 @@ using System.Data.SqlClient;
 struct Rep
 {
     long id;
-    string repname;
-    int numclient;
+    public string repname;
+    public int numclient;
     public string clientids;
-    float totalsell;
+    public float totalsell;
     
     public Rep(int id, string repname, int numclient, string clientids, float totalsell)
     {
@@ -37,10 +37,10 @@ struct Client
 {
     public long id;
     string name;
-    float totalsales;
-    string itemsid;
-    float cash;
-    float debit;
+    public float totalsales;
+    public string itemsid;
+    public float cash;
+    public float debit;
 
     public Client(long id, string name, float totalsales, string itemsid, float cash, float debit)
     {
@@ -63,6 +63,7 @@ namespace Test1
     {
         BindingList<Rep> Reps = new BindingList<Rep>();
         BindingList<Client> clients = new BindingList<Client>();
+        BindingList<Client> temp_clients = new BindingList<Client>();
         Utilities util = new Utilities();
         bool All_Loaded = false;
         public CustomersAndRepresentatives()
@@ -113,14 +114,38 @@ namespace Test1
 
         private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            try
+            {
+                ClientName.Text = temp_clients[listBox3.SelectedIndex].Name;
+                Purchases.Text = Convert.ToString(temp_clients[listBox3.SelectedIndex].totalsales);
+                Cash.Text = Convert.ToString(temp_clients[listBox3.SelectedIndex].cash);
+                Credit.Text = Convert.ToString(temp_clients[listBox3.SelectedIndex].debit);
+
+                ClientName.Visible = true;
+                Purchases.Visible = true;
+                Cash.Visible = true;
+                Credit.Visible = true;
+            }
+            catch
+            {
+                
+            }
         }
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            BindingList <Client> temp_clients = new BindingList<Client>();
             int index = listBox2.SelectedIndex;
             string ids_string = Reps[index].clientids;
+            RepName.Text = Reps[index].repname;
+            numclients.Text = Convert.ToString(Reps[index].numclient);
+            Sales.Text = Convert.ToString(Reps[index].totalsell);
+
+            RepName.Visible = true;
+            numclients.Visible = true;
+            Sales.Visible = true;
+
+            temp_clients.Clear();
+
             string temp_id;
             if (!All_Loaded)
                 return;
@@ -145,6 +170,7 @@ namespace Test1
 
                     listBox3.DisplayMember = "Name";
                     listBox3.DataSource = temp_clients;
+                listBox3_SelectedIndexChanged(this, new EventArgs());
             }
             catch
             {
