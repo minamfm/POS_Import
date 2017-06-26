@@ -11,20 +11,34 @@ using System.Windows.Forms;
 
 namespace Test1
 {
+
+
     public partial class newitem : Form
     {
+
+       
         Test1.Utilities util = new Test1.Utilities();
         public newitem()
         {
             InitializeComponent();
             AutoCompleteText();
 
+
+
         }
-void AutoCompleteText()
+
+
+        void AutoCompleteText()
         {
             textBox1.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             textBox1.AutoCompleteSource = AutoCompleteSource.CustomSource;
-         
+            //textBox2.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            //textBox2.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            //textBox3.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            //textBox3.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            //textBox4.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            //textBox4.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
             AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
 
             SqlConnection conn = new SqlConnection(util.GetConnectionString());
@@ -68,7 +82,11 @@ void AutoCompleteText()
             }
 
             textBox1.AutoCompleteCustomSource = collection;
+
+
         }
+
+
 
         // Auto complete Textbox suggest added     
         // TODO Autofill all blanks
@@ -159,5 +177,51 @@ void AutoCompleteText()
                 }
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            DialogResult dialogResult = MessageBox.Show("Are you sure want to delete?", "Some Title", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                if (!string.IsNullOrEmpty(textBox1.Text))
+                {
+                    try
+                    {
+
+                        using (SqlConnection con = new SqlConnection(util.GetConnectionString()))
+                        {
+
+
+
+
+
+                            con.Open();
+                            using (SqlCommand command = new SqlCommand("DELETE FROM item WHERE Code = '" + Convert.ToInt32(textBox1.Text) + "'", con))
+                            {
+                                command.ExecuteNonQuery();
+                                MessageBox.Show("Done!");
+                            }
+                            con.Close();
+                        }
+                    }
+                    catch (SystemException ex)
+                    {
+                        MessageBox.Show(string.Format("An error occurred: {0}", ex.Message));
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please insert Code !! ");
+
+                }
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                
+            }
+
+          
+        }
     }
-}
+    }
