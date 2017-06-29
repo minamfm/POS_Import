@@ -19,7 +19,7 @@ namespace Test1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            newitemcheckbox newcheck = new newitemcheckbox();
+            newitemcheckbox newcheck = new newitemcheckbox(this);
             newcheck.Show();
         }
     }

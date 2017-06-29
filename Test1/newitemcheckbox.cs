@@ -16,12 +16,17 @@ struct item
     public string name;
     public string supplier;
     public string type;
-    public int qty;
-    public int qtyunit;
-    public float price;
-    public float editable_price;
+    public string qty;
+    public string qtyunit;
+    public string price;
+    public string editable_price;
 
-   public item (string cd, string nm, string supp, string type, int qty, int qtyunit, float price, float editable_prc)
+    public string Code 
+        {
+            get { return code; }
+             set { }
+        }
+   public item (string cd, string nm, string supp, string type, string qty, string qtyunit, string price, string editable_prc)
     {
         this.code = cd;
         this.name = nm;
@@ -39,8 +44,10 @@ namespace Test1
     {
         Utilities util = new Utilities();
         List<item> items = new List<item>();
-        public newitemcheckbox()
+        object sender;
+        public newitemcheckbox(object senderform)
         {
+            sender = senderform;
             InitializeComponent();
         }
 
@@ -57,14 +64,14 @@ namespace Test1
             listView1.GridLines = true;
             listView1.FullRowSelect = true;
 
-            listView1.Columns.Add("code");
-            listView1.Columns.Add("name");
-            listView1.Columns.Add("supplier");
-            listView1.Columns.Add("type");
-            listView1.Columns.Add("qty");
-            listView1.Columns.Add("qtyunit");
-            listView1.Columns.Add("price");
-            listView1.Columns.Add("editable_price");
+            //listView1.Columns.Add("code");
+            //listView1.Columns.Add("name");
+            //listView1.Columns.Add("supplier");
+            //listView1.Columns.Add("type");
+            //listView1.Columns.Add("qty");
+            //listView1.Columns.Add("qtyunit");
+            //listView1.Columns.Add("price");
+            //listView1.Columns.Add("editable_price");
 
             try
             {
@@ -73,11 +80,13 @@ namespace Test1
 
                 while (rdr.Read())
                 {
-                    item itm = new item(rdr.GetString(0), rdr.GetString(1), rdr.GetString(2), rdr.GetString(3), 0, (int)rdr.GetValue(5), (float)(double)rdr.GetValue(6), (float)(double)rdr.GetValue(6));
+                    item itm = new item(rdr.GetString(0), rdr.GetString(1), rdr.GetString(2), rdr.GetString(3), Convert.ToString(0), Convert.ToString((int)rdr.GetValue(5)), Convert.ToString((float)(double)rdr.GetValue(6)), Convert.ToString((float)(double)rdr.GetValue(6)));
                     items.Add(itm);
-                    listView1.Items.Add(GenerateItem(itm));
-                }
+                   // listView1.Items.Add(GenerateItem(itm));
 
+                }
+                listView1.SetObjects(items);
+                
               
                 rdr.Close();
             }
@@ -91,6 +100,16 @@ namespace Test1
             string[] arr = { it.code, it.name, it.supplier, it.type, Convert.ToString(it.qty), Convert.ToString(it.qtyunit), Convert.ToString(it.price), Convert.ToString(it.editable_price) };
             ListViewItem ret = new ListViewItem(arr);
             return ret;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            listView1.ListFilter = new BrightIdeasSoftware.TailFilter();
         }
     }
 }
