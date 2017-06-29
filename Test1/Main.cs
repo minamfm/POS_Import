@@ -83,6 +83,12 @@ namespace Test1
         {
             Application.Exit();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            New_Transaction nt = new New_Transaction();
+            nt.Show();
+        }
     }
 }
 
