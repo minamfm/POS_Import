@@ -29,7 +29,14 @@ namespace Test1
             }
             else
             {
-                ExportEx(dataGridView1, "expo" ,x);
+                if(string.IsNullOrEmpty(textBox2.Text))
+                {
+                    MessageBox.Show("Please Enter a Name");
+                }else
+                {
+                    ExportEx(dataGridView1, textBox2.Text, x);
+                }
+               
             }
             
         }
@@ -51,7 +58,8 @@ namespace Test1
                 }
             }
 
-            obj.ActiveWorkbook.SaveCopyAs( path+ xlname + ".xlsx");
+           string xlxname = "\\" + xlname ; 
+            obj.ActiveWorkbook.SaveCopyAs( path + xlxname + ".xlsx");
             MessageBox.Show("Done :) ! ");
 
         }

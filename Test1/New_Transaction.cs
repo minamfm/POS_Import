@@ -16,11 +16,5 @@ namespace Test1
         {
             InitializeComponent();
         }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            newitemcheckbox newcheck = new newitemcheckbox(this);
-            newcheck.Show();
-        }
     }
 }
