@@ -30,8 +30,8 @@ namespace Test1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            newitem newit1 = new newitem();
-            newit1.Show();
+            Items item = new Items();
+            item.Show();
         }
         
         
