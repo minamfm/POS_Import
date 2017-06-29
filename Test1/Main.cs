@@ -77,6 +77,12 @@ namespace Test1
             CustomersAndRepresentatives cust = new CustomersAndRepresentatives();
             cust.Show();
         }
+
+
+        private void Main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
 

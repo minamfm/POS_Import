@@ -20,7 +20,7 @@ namespace Test1
         SqlDataAdapter adap;
         DataTable dt;
         SqlCommandBuilder commandbuilder;
-        DataSet ds;
+
         public Items()
         {
             InitializeComponent();
@@ -28,50 +28,22 @@ namespace Test1
 
         }
 
-        
-        private void Fill_Grid()
-        {
-         
-            try
-            {
-
-                conn = new SqlConnection(util.GetConnectionString());
-                conn.Open();
-                adap = new SqlDataAdapter("Select * from Item", conn);
-                dt = new DataTable();
-                adap.Fill(dt);
-                dataGridView1.DataSource = dt;
-                conn.Close();
-
-
-            }
-            catch
-            {
-                MessageBox.Show("Can't connect");
-            }
-
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            conn = new SqlConnection(util.GetConnectionString());
+            
             DialogResult dialogResult = MessageBox.Show("Are you sure want to update", "Check ? ", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
 
                     try
                     {
+                    conn = new SqlConnection(util.GetConnectionString());
                     conn.Open();
                     MessageBox.Show("TAMAM1");
-
-                        commandbuilder = new SqlCommandBuilder(adap);
+                    commandbuilder = new SqlCommandBuilder(adap);
                     MessageBox.Show("TAMAM2");
-
-                    ds = new DataSet();
-                    ds.Tables.Add(dt);
-
-                    adap.Update(ds, "Item");
-
+                    adap.Update(dt);
                     MessageBox.Show("Information updated");
                     conn.Close();
                     }
