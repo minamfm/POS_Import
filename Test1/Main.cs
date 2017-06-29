@@ -25,7 +25,8 @@ namespace Test1
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            Transactions transactions = new Transactions();
+            transactions.Show();
         }
 
         private void button5_Click(object sender, EventArgs e)
