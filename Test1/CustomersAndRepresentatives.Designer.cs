@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -49,6 +50,10 @@
             this.label13 = new System.Windows.Forms.Label();
             this.Credit = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.New = new System.Windows.Forms.Button();
+            this.Edit = new System.Windows.Forms.Button();
+            this.Remove = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -250,11 +255,45 @@
             this.label14.TabIndex = 22;
             this.label14.Text = "مديونية";
             // 
+            // New
+            // 
+            this.New.Location = new System.Drawing.Point(1402, 200);
+            this.New.Name = "New";
+            this.New.Size = new System.Drawing.Size(193, 62);
+            this.New.TabIndex = 24;
+            this.New.Text = "إضافة";
+            this.New.UseVisualStyleBackColor = true;
+            // 
+            // Edit
+            // 
+            this.Edit.Location = new System.Drawing.Point(1402, 348);
+            this.Edit.Name = "Edit";
+            this.Edit.Size = new System.Drawing.Size(193, 62);
+            this.Edit.TabIndex = 25;
+            this.Edit.Text = "تعديل";
+            this.Edit.UseVisualStyleBackColor = true;
+            // 
+            // Remove
+            // 
+            this.Remove.Location = new System.Drawing.Point(1402, 515);
+            this.Remove.Name = "Remove";
+            this.Remove.Size = new System.Drawing.Size(193, 62);
+            this.Remove.TabIndex = 26;
+            this.Remove.Text = "حذف";
+            this.Remove.UseVisualStyleBackColor = true;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // CustomersAndRepresentatives
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1882, 973);
+            this.Controls.Add(this.Remove);
+            this.Controls.Add(this.Edit);
+            this.Controls.Add(this.New);
             this.Controls.Add(this.Credit);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.Cash);
@@ -306,5 +345,9 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label Credit;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button New;
+        private System.Windows.Forms.Button Edit;
+        private System.Windows.Forms.Button Remove;
+        private System.Windows.Forms.Timer timer1;
     }
 }
