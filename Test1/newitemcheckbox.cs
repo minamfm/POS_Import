@@ -20,7 +20,7 @@ struct item
     public string qtyunit;
     public string price;
     public string editable_price;
-
+    public bool item_checked;
     public string Code 
         {
             get { return code; }
@@ -36,6 +36,7 @@ struct item
         this.qtyunit = qtyunit;
         this.price = price;
         this.editable_price = editable_prc;
+        this.item_checked = false;
     }
 }
 namespace Test1
@@ -44,6 +45,7 @@ namespace Test1
     {
         Utilities util = new Utilities();
         List<item> items = new List<item>();
+        List<item> items_filter = new List<item>();
         object sender;
         public newitemcheckbox(object senderform)
         {
@@ -63,7 +65,7 @@ namespace Test1
             listView1.View = View.Details;
             listView1.GridLines = true;
             listView1.FullRowSelect = true;
-
+            listView1.AlwaysGroupBySortOrder = System.Windows.Forms.SortOrder.None;
             //listView1.Columns.Add("code");
             //listView1.Columns.Add("name");
             //listView1.Columns.Add("supplier");
@@ -85,7 +87,8 @@ namespace Test1
                    // listView1.Items.Add(GenerateItem(itm));
 
                 }
-                listView1.SetObjects(items);
+                items_filter = items;
+                listView1.SetObjects(items_filter);
                 
               
                 rdr.Close();
@@ -104,12 +107,54 @@ namespace Test1
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            listView1.ListFilter = new BrightIdeasSoftware.TailFilter();
+            items_filter = items.FindAll(r => r.code.Contains(textBox1.Text));
+            listView1.SetObjects(items_filter);
+        }
+
+        private void listView1_CellEditFinished(object sender, BrightIdeasSoftware.CellEditEventArgs e)
+        {
+            try
+            {
+                item tempitem = items_filter[listView1.SelectedIndex];
+                if (e.Column.Text == "Editable Price")
+                {
+                    string test = Convert.ToString(e.NewValue);
+                    tempitem.editable_price = test;
+                    items_filter[listView1.SelectedIndex] = tempitem;
+                    int index = items.FindIndex(r => r.code == tempitem.code);
+                    items[index] = tempitem;
+                }
+                else if(e.Column.Text == "Quantity")
+                {
+                    string test = Convert.ToString(e.NewValue);
+                    tempitem.qty = test;
+                    items_filter[listView1.SelectedIndex] = tempitem;
+                    int index = items.FindIndex(r => r.code == tempitem.code);
+                    items[index] = tempitem;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Editing error");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void listView1_ItemChecked(object sender, ItemCheckedEventArgs e)
+        {
+            
+            item tempitem = items_filter[e.Item.Index];
+            tempitem.item_checked = e.Item.Checked;
+            items_filter[e.Item.Index] = tempitem;
         }
     }
 }

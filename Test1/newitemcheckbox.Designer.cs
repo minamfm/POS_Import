@@ -61,6 +61,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // listView1
             // 
@@ -85,17 +86,21 @@
             this.EditablePrice});
             this.listView1.Cursor = System.Windows.Forms.Cursors.Default;
             this.listView1.DataSource = null;
+            this.listView1.HasCollapsibleGroups = false;
             this.listView1.Location = new System.Drawing.Point(12, 110);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(1541, 695);
             this.listView1.TabIndex = 3;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.UseFiltering = true;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.View = System.Windows.Forms.View.List;
+            this.listView1.CellEditFinished += new BrightIdeasSoftware.CellEditEventHandler(this.listView1_CellEditFinished);
+            this.listView1.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.listView1_ItemChecked);
             // 
             // Code
             // 
             this.Code.AspectName = "code";
+            this.Code.Groupable = false;
             this.Code.Text = "Code";
             this.Code.Width = 187;
             // 
