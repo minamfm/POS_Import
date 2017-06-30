@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 
 
-struct item
+public struct item
 {
     public string code;
     public string name;
@@ -46,10 +46,10 @@ namespace Test1
         Utilities util = new Utilities();
         List<item> items = new List<item>();
         List<item> items_filter = new List<item>();
-        object sender;
-        public newitemcheckbox(object senderform)
+        object senderform;
+        public newitemcheckbox(object sender_form)
         {
-            sender = senderform;
+            senderform = sender_form;
             InitializeComponent();
         }
 
@@ -66,14 +66,6 @@ namespace Test1
             listView1.GridLines = true;
             listView1.FullRowSelect = true;
             listView1.AlwaysGroupBySortOrder = System.Windows.Forms.SortOrder.None;
-            //listView1.Columns.Add("code");
-            //listView1.Columns.Add("name");
-            //listView1.Columns.Add("supplier");
-            //listView1.Columns.Add("type");
-            //listView1.Columns.Add("qty");
-            //listView1.Columns.Add("qtyunit");
-            //listView1.Columns.Add("price");
-            //listView1.Columns.Add("editable_price");
 
             try
             {
@@ -84,18 +76,16 @@ namespace Test1
                 {
                     item itm = new item(rdr.GetString(0), rdr.GetString(1), rdr.GetString(2), rdr.GetString(3), Convert.ToString(0), Convert.ToString((int)rdr.GetValue(5)), Convert.ToString((float)(double)rdr.GetValue(6)), Convert.ToString((float)(double)rdr.GetValue(6)));
                     items.Add(itm);
-                   // listView1.Items.Add(GenerateItem(itm));
-
                 }
                 items_filter = items;
                 listView1.SetObjects(items_filter);
-                
-              
                 rdr.Close();
+                conn.Close();
+
             }
             catch
             {
-                MessageBox.Show("A7a");
+                MessageBox.Show("Database access error");
             }
         }
         private static ListViewItem GenerateItem(item it)
@@ -107,7 +97,9 @@ namespace Test1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            New_Transaction ni = (New_Transaction)senderform;// items.FindAll(r => r.item_checked)
+            ni.update_items(items.FindAll(r=> r.item_checked));
+            this.Hide();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -155,6 +147,8 @@ namespace Test1
             item tempitem = items_filter[e.Item.Index];
             tempitem.item_checked = e.Item.Checked;
             items_filter[e.Item.Index] = tempitem;
+            items[items.FindIndex(r => r.code == tempitem.code)] = tempitem;
+            listView1.SetObjects(items_filter);
         }
     }
 }

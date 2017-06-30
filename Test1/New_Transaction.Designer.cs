@@ -36,23 +36,29 @@
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.listView1 = new BrightIdeasSoftware.DataListView();
+            this.item_Name = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.Qty = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.sellprice = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.Amount = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.listView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(302, 644);
+            this.button1.Location = new System.Drawing.Point(282, 826);
             this.button1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(150, 44);
             this.button1.TabIndex = 0;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(520, 644);
+            this.button2.Location = new System.Drawing.Point(475, 826);
             this.button2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(150, 44);
@@ -83,12 +89,12 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(718, 290);
+            this.label3.Location = new System.Drawing.Point(702, 672);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 25);
+            this.label3.Size = new System.Drawing.Size(137, 25);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Amount";
+            this.label3.Text = "Total amount";
             // 
             // label4
             // 
@@ -117,17 +123,9 @@
             this.textBox1.Size = new System.Drawing.Size(238, 31);
             this.textBox1.TabIndex = 7;
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(302, 285);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(238, 31);
-            this.textBox2.TabIndex = 8;
-            // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(373, 366);
+            this.button3.Location = new System.Drawing.Point(15, 366);
             this.button3.Margin = new System.Windows.Forms.Padding(6);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(70, 68);
@@ -136,13 +134,59 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // listView1
+            // 
+            this.listView1.AllColumns.Add(this.item_Name);
+            this.listView1.AllColumns.Add(this.Qty);
+            this.listView1.AllColumns.Add(this.sellprice);
+            this.listView1.CellEditUseWholeCell = false;
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.item_Name,
+            this.Qty,
+            this.sellprice});
+            this.listView1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.listView1.DataSource = null;
+            this.listView1.HasCollapsibleGroups = false;
+            this.listView1.Location = new System.Drawing.Point(94, 366);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(576, 225);
+            this.listView1.TabIndex = 10;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // item_Name
+            // 
+            this.item_Name.AspectName = "name";
+            this.item_Name.Text = "Name";
+            // 
+            // Qty
+            // 
+            this.Qty.AspectName = "qty";
+            this.Qty.Text = "Qty";
+            // 
+            // sellprice
+            // 
+            this.sellprice.AspectName = "editable_price";
+            this.sellprice.Text = "Selling for";
+            // 
+            // Amount
+            // 
+            this.Amount.AutoSize = true;
+            this.Amount.Location = new System.Drawing.Point(406, 672);
+            this.Amount.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.Amount.Name = "Amount";
+            this.Amount.Size = new System.Drawing.Size(85, 25);
+            this.Amount.TabIndex = 11;
+            this.Amount.Text = "Amount";
+            // 
             // New_Transaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1024, 925);
+            this.Controls.Add(this.Amount);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label4);
@@ -154,6 +198,8 @@
             this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "New_Transaction";
             this.Text = "New_Transaction";
+            this.Load += new System.EventHandler(this.New_Transaction_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.listView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,7 +215,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button3;
+        private BrightIdeasSoftware.DataListView listView1;
+        private BrightIdeasSoftware.OLVColumn item_Name;
+        private BrightIdeasSoftware.OLVColumn Qty;
+        private BrightIdeasSoftware.OLVColumn sellprice;
+        private System.Windows.Forms.Label Amount;
     }
 }

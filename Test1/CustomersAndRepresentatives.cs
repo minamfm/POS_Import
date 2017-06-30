@@ -61,9 +61,9 @@ namespace Test1
 {
     public partial class CustomersAndRepresentatives : Form
     {
-        BindingList<Rep> Reps = new BindingList<Rep>();
-        BindingList<Client> clients = new BindingList<Client>();
-        BindingList<Client> temp_clients = new BindingList<Client>();
+        List<Rep> Reps = new List<Rep>();
+        List<Client> clients = new List<Client>();
+        List<Client> temp_clients = new List<Client>();
         Utilities util = new Utilities();
         bool All_Loaded = false;
         public CustomersAndRepresentatives()
@@ -74,41 +74,22 @@ namespace Test1
 
         private void CustomersAndRepresentatives_Initialize()
         {
-            SqlConnection conn = new SqlConnection(util.GetConnectionString());
-            string query = "Select * from Represent";
-            string query2 = "Select * from Client";
-            SqlCommand cmdq = new SqlCommand(query, conn);
-            SqlCommand cmdq2 = new SqlCommand(query2, conn);
-
-            SqlDataReader rdr,rdr2;
 
             try
             {
-                conn.Open();
+                Reps = util.GetAllReps();
 
-                rdr = cmdq.ExecuteReader();
-
-                while (rdr.Read())
-                {
-                    Reps.Add(new Rep(rdr.GetInt32(0), rdr.GetString(1), rdr.GetInt32(2), rdr.GetString(3), (float) (double)rdr.GetValue(4)));
-                }
                 listBox2.DisplayMember = "repname";
                 listBox2.DataSource = Reps;
-                rdr.Close();
 
-                rdr2 = cmdq2.ExecuteReader();
-
-                while (rdr2.Read())
-                {
-                    clients.Add(new Client(rdr2.GetInt32(0), rdr2.GetString(1),(float)(double)rdr2.GetValue(2), rdr2.GetString(3), (float)(double)rdr2.GetValue(4), (float)(double)rdr2.GetValue(5)));
-                }
+                clients = util.GetAllClients();
 
                 All_Loaded = true;
                 listBox2_SelectedIndexChanged(this, new EventArgs ());
             }
             catch
             {
-                MessageBox.Show("A7a");
+                MessageBox.Show("Database Exception");
             }
         }
 
@@ -168,8 +149,10 @@ namespace Test1
                         temp_clients.Add(clients.First(r => r.id == Convert.ToInt32(temp_id)));
                 }
 
-                    listBox3.DisplayMember = "Name";
-                    listBox3.DataSource = temp_clients;
+                    
+                listBox3.DataSource = null;
+                listBox3.DisplayMember = "Name";
+                listBox3.DataSource = temp_clients;
                 listBox3_SelectedIndexChanged(this, new EventArgs());
             }
             catch

@@ -31,6 +31,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.listView1 = new BrightIdeasSoftware.DataListView();
+            this.Apply = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.Code = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.ItemName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.Supplier = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -39,6 +40,7 @@
             this.Qtyunit = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.Price = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.EditablePrice = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.test = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.listView1)).BeginInit();
             this.SuspendLayout();
@@ -65,6 +67,7 @@
             // 
             // listView1
             // 
+            this.listView1.AllColumns.Add(this.Apply);
             this.listView1.AllColumns.Add(this.Code);
             this.listView1.AllColumns.Add(this.ItemName);
             this.listView1.AllColumns.Add(this.Supplier);
@@ -73,9 +76,11 @@
             this.listView1.AllColumns.Add(this.Qtyunit);
             this.listView1.AllColumns.Add(this.Price);
             this.listView1.AllColumns.Add(this.EditablePrice);
+            this.listView1.AllColumns.Add(this.test);
             this.listView1.CellEditActivation = BrightIdeasSoftware.ObjectListView.CellEditActivateMode.SingleClick;
             this.listView1.CellEditUseWholeCell = false;
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Apply,
             this.Code,
             this.ItemName,
             this.Supplier,
@@ -96,6 +101,12 @@
             this.listView1.View = System.Windows.Forms.View.List;
             this.listView1.CellEditFinished += new BrightIdeasSoftware.CellEditEventHandler(this.listView1_CellEditFinished);
             this.listView1.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.listView1_ItemChecked);
+            // 
+            // Apply
+            // 
+            this.Apply.AspectName = "item_checked";
+            this.Apply.CheckBoxes = true;
+            this.Apply.Text = "Apply";
             // 
             // Code
             // 
@@ -139,6 +150,11 @@
             this.EditablePrice.AspectName = "editable_price";
             this.EditablePrice.Text = "Editable Price";
             // 
+            // test
+            // 
+            this.test.DisplayIndex = 0;
+            this.test.IsVisible = false;
+            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(255, 35);
@@ -178,5 +194,7 @@
         private BrightIdeasSoftware.OLVColumn Price;
         private BrightIdeasSoftware.OLVColumn EditablePrice;
         private System.Windows.Forms.TextBox textBox1;
+        private BrightIdeasSoftware.OLVColumn Apply;
+        private BrightIdeasSoftware.OLVColumn test;
     }
 }
