@@ -91,6 +91,12 @@
     <Compile Include="New_Transaction.Designer.cs">
       <DependentUpon>New_Transaction.cs</DependentUpon>
     </Compile>
+    <Compile Include="returntran.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="returntran.Designer.cs">
+      <DependentUpon>returntran.cs</DependentUpon>
+    </Compile>
     <Compile Include="Transactions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="New_user.resx">
       <DependentUpon>New_user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="returntran.resx">
+      <DependentUpon>returntran.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="T1.resx">
       <DependentUpon>T1.cs</DependentUpon>
