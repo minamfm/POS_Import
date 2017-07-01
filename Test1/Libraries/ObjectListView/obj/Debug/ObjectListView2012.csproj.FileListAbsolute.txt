@@ -7,3 +7,12 @@ C:\POS_main\POS_Import\Test1\Libraries\ObjectListView\obj\Debug\BrightIdeasSoftw
 C:\POS_main\POS_Import\Test1\Libraries\ObjectListView\obj\Debug\ObjectListView2012.csproj.GenerateResource.Cache
 C:\POS_main\POS_Import\Test1\Libraries\ObjectListView\obj\Debug\ObjectListView.dll
 C:\POS_main\POS_Import\Test1\Libraries\ObjectListView\obj\Debug\ObjectListView.pdb
+C:\Users\Ramez\Documents\GitShit\New Repo\POS_Import\Test1\Libraries\ObjectListView\bin\Debug\ObjectListView.XML
+C:\Users\Ramez\Documents\GitShit\New Repo\POS_Import\Test1\Libraries\ObjectListView\bin\Debug\ObjectListView.dll
+C:\Users\Ramez\Documents\GitShit\New Repo\POS_Import\Test1\Libraries\ObjectListView\bin\Debug\ObjectListView.pdb
+C:\Users\Ramez\Documents\GitShit\New Repo\POS_Import\Test1\Libraries\ObjectListView\obj\Debug\ObjectListView2012.csprojResolveAssemblyReference.cache
+C:\Users\Ramez\Documents\GitShit\New Repo\POS_Import\Test1\Libraries\ObjectListView\obj\Debug\BrightIdeasSoftware.Properties.Resources.resources
+C:\Users\Ramez\Documents\GitShit\New Repo\POS_Import\Test1\Libraries\ObjectListView\obj\Debug\BrightIdeasSoftware.ColumnSelectionForm.resources
+C:\Users\Ramez\Documents\GitShit\New Repo\POS_Import\Test1\Libraries\ObjectListView\obj\Debug\ObjectListView2012.csproj.GenerateResource.Cache
+C:\Users\Ramez\Documents\GitShit\New Repo\POS_Import\Test1\Libraries\ObjectListView\obj\Debug\ObjectListView.dll
+C:\Users\Ramez\Documents\GitShit\New Repo\POS_Import\Test1\Libraries\ObjectListView\obj\Debug\ObjectListView.pdb

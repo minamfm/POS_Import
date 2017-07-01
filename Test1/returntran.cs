@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 
 
-struct itemcdeqty {
+public struct itemcdeqty {
     public string code;
     public string qty;
 
@@ -22,15 +22,15 @@ struct itemcdeqty {
         this.qty = qt;
     }
 }
-struct itemdisp
+public struct itemdisp
 {
     public string codefinal;
     public string namefinal;
-    public int qtyfinal;
-    public int qtyufinal;
+    public string qtyfinal;
+    public string qtyufinal;
     public string supplierfinal;
 
-    public itemdisp (string x1, string x2 , int x3 , int x4 , string x5)
+    public itemdisp (string x1, string x2 , string x3 , string x4 , string x5)
     {
         this.codefinal = x1;
         this.namefinal = x2;
@@ -54,10 +54,11 @@ namespace Test1
         string stuff1;
         string buysell1;
         string clientname1;
-        Test1.Utilities util;
-        // code&&++qty++&&
-       List <itemcdeqty> itemx = new List <itemcdeqty>();
-        List<itemdisp> itemdisplay = new List<itemdisp>(); 
+        
+        //Object senderform;
+
+           List <itemcdeqty> itemx = new List <itemcdeqty>();
+          List<itemdisp> itemdisplay = new List<itemdisp>(); 
 
         public returntran(string x, string date, string clientid, string total, string stuff, string buysell, string clientname)
         {
@@ -74,6 +75,8 @@ namespace Test1
 
           
             InitializeComponent();
+            getitems();
+            
         }
      
 
@@ -90,7 +93,8 @@ namespace Test1
             textBox5.Text = date1;
             textBox5.ReadOnly = true;
 
-           
+            queryitem();   // loading query item to add items returned to olv
+
         }
 
 
@@ -100,7 +104,7 @@ namespace Test1
 
         }
 
-        private void getitems()
+        private void getitems() // parsing string of items bought (stuff)
         {
 
 
@@ -110,14 +114,19 @@ namespace Test1
 
             while (stuff1 != "")
             {
+
+                MessageBox.Show(stuff1);
                 if (stuff1.IndexOf("&&++") >= 0)
-                {
-                    temp_code = temp_code.Substring(0, temp_code.IndexOf("&&++"));
-                    stuff1 = stuff1.Substring(stuff1.IndexOf(',') + 1);
+                {   
+                    
+                    temp_code = stuff1.Substring(0, stuff1.IndexOf("&&++"));
+                    stuff1 = stuff1.Substring(stuff1.IndexOf("&&++") + 4);
+                    MessageBox.Show(stuff1);
                     if (stuff1.IndexOf("++&&") >= 0)
                     {
-                        temp_qty = temp_qty.Substring(0, temp_qty.IndexOf("++&&"));
-                        stuff1 = stuff1.Substring(stuff1.IndexOf("++&&") + 1);
+                        temp_qty = stuff1.Substring(0, stuff1.IndexOf("++&&"));
+                        stuff1 = stuff1.Substring(stuff1.IndexOf("++&&") + 4);
+                        MessageBox.Show(stuff1);
                     }
 
                     itemx.Add(new itemcdeqty(temp_code, temp_qty));
@@ -132,14 +141,22 @@ namespace Test1
 
 
 
-        private void queryitem()
+         void queryitem() // Get items from db and adding it to List <itemdisp> ..
         {
+            Test1.Utilities util = new Utilities();
             SqlConnection conn = new SqlConnection(util.GetConnectionString());
             string query = "Select * from Item";
 
             SqlCommand cmdq = new SqlCommand(query, conn);
 
             SqlDataReader rdr;
+            
+            objectListView1.CheckBoxes = true;
+            objectListView1.View = View.Details;
+            objectListView1.GridLines = true;
+            objectListView1.FullRowSelect = true;
+            objectListView1.AlwaysGroupBySortOrder = System.Windows.Forms.SortOrder.None;
+               
 
             try
             {
@@ -152,8 +169,10 @@ namespace Test1
                     {
                         if(itemx[i].code == rdr.GetString(0))
                         {
-                            itemdisplay.Add(new itemdisp(rdr.GetString(0), rdr.GetString(1), Convert.ToInt32(itemx[i].qty),
-                                (Int32) rdr.GetValue(5), rdr.GetString(3)));
+                            itemdisplay.Add(new itemdisp(rdr.GetString(0), rdr.GetString(1), itemx[i].qty,
+                                rdr.GetValue(5).ToString(), rdr.GetString(3)));
+
+                            MessageBox.Show(itemx[i].qty);
                         }
                        
                     }
@@ -162,8 +181,10 @@ namespace Test1
    
                 }
 
-                objectListView1.SetObjects(itemdisplay);
-                
+               
+               
+
+                objectListView1.AddObject(itemdisplay);
                 rdr.Close();
                 conn.Close();
 
@@ -174,8 +195,7 @@ namespace Test1
             }
         }
 
-
-
+       
     }
 
 

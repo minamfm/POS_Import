@@ -63,6 +63,13 @@ namespace Test1
         private void button2_Click(object sender, EventArgs e)
         {
             //conn = new SqlConnection(util.GetConnectionString());
+            string x1 = "";
+            string x2 = "";
+            string x3 = "";
+            string x4 = "";
+            string x5 = "";
+            string x6 = "";
+            string x7 = "";
 
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
@@ -73,9 +80,26 @@ namespace Test1
                 string value5 = row.Cells[4].Value.ToString();
                 string value6 = row.Cells[5].Value.ToString();
                 string value7 = row.Cells[6].Value.ToString();
-                string value8 = row.Cells[7].Value.ToString();
+                x1 = value1;   // x
+                x2 = value2;   // date
+                x3 = value3;    // client id 
+                x4 = value4;    // total
+                x5 = value5;   // items
+                x6 = value6;    //sellbuy
+                x7 = value7;    // client name
+                MessageBox.Show(value1+"    "+ value2 + "    " + value3 + "    " + value4 + "    " + value5 + "    " + value6 + "    " + value7 + "    "  );
+            }
 
-                MessageBox.Show(value1+"    "+ value2 + "    " + value3 + "    " + value4 + "    " + value5 + "    " + value6 + "    " + value7 + "    " + value8 + "    "  );
+            if (!string.IsNullOrEmpty(x1) && !string.IsNullOrEmpty(x2) && !string.IsNullOrEmpty(x3)
+                && !string.IsNullOrEmpty(x4)&&!string.IsNullOrEmpty(x5) &&!string.IsNullOrEmpty(x6)
+                && !string.IsNullOrEmpty(x7))
+            {
+                returntran rt = new returntran(x1,x2,x3,x4,x5,x6,x7);
+                rt.Show();
+            }
+            else
+            {
+                MessageBox.Show("errrr");
             }
 
         }
