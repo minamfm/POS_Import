@@ -138,7 +138,7 @@ namespace Test1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
         }
 
         private void listView1_ItemChecked(object sender, ItemCheckedEventArgs e)
@@ -149,6 +149,11 @@ namespace Test1
             items_filter[e.Item.Index] = tempitem;
             items[items.FindIndex(r => r.code == tempitem.code)] = tempitem;
             listView1.SetObjects(items_filter);
+        }
+
+        private void newitemcheckbox_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
         }
     }
 }

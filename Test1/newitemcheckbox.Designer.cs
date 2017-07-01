@@ -174,6 +174,7 @@
             this.Controls.Add(this.button1);
             this.Name = "newitemcheckbox";
             this.Text = "newitemcheckbox";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.newitemcheckbox_FormClosing);
             this.Load += new System.EventHandler(this.newitemcheckbox_Load);
             ((System.ComponentModel.ISupportInitialize)(this.listView1)).EndInit();
             this.ResumeLayout(false);

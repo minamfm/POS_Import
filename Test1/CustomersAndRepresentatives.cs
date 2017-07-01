@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 struct Rep
 {
-    long id;
+    public long id;
     public string repname;
     public int numclient;
     public string clientids;
