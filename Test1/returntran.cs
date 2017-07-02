@@ -184,7 +184,7 @@ namespace Test1
                
                
 
-                objectListView1.AddObject(itemdisplay);
+                objectListView1.SetObjects(itemdisplay);
                 rdr.Close();
                 conn.Close();
 
