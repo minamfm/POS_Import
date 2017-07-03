@@ -82,6 +82,27 @@ namespace Test1
 
             return items;
         }
+        public List<Transaction> GetAllTransactions()
+        {
+            List<Transaction> transactions = new List<Transaction>();
+
+            SqlConnection conn = new SqlConnection(GetConnectionString());
+            string query = "Select * from Transactions";
+            SqlCommand cmdq = new SqlCommand(query, conn);
+
+            SqlDataReader rdr;
+            conn.Open();
+            rdr = cmdq.ExecuteReader();
+
+            while(rdr.Read())
+            {
+                transactions.Add(new Transaction(((int)rdr.GetValue(0)).ToString(),(string)rdr.GetValue(1), (int)rdr.GetValue(2), (float)(double)rdr.GetValue(3),(string) rdr.GetValue(4),(int) rdr.GetValue(5), (string)rdr.GetValue(6)));
+
+            }
+
+            conn.Close();
+            return transactions;
+        }
         public bool InsertTranscation(Transaction trans)
         {
             bool ret = false;

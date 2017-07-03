@@ -14,7 +14,7 @@ namespace Test1
     public partial class Transactions : Form
     {
         Test1.Utilities util = new Test1.Utilities();
-
+        List<Transaction> AllTransactions = new List<Transaction>();
         SqlConnection conn;
         DataTable dt = new DataTable();
         SqlDataAdapter adap;
@@ -23,39 +23,39 @@ namespace Test1
         {
             InitializeComponent();
             Getdatagrid();
-          
+
         }
 
-    
 
 
-        
+
+
         private void Getdatagrid()
         {
-            conn = new SqlConnection(util.GetConnectionString());
+            //conn = new SqlConnection(util.GetConnectionString());
 
-            string query = "Select * From Transactions";
+            //string query = "Select * From Transactions";
 
-            try
-            {
-                conn.Open();
-                adap = new SqlDataAdapter(query, conn);
-                DataTable dt = new DataTable();
-                adap.Fill(dt);
-                dataGridView1.DataSource = dt;
-                
-                conn.Close();
+            //try
+            //{
+            //    conn.Open();
+            //    adap = new SqlDataAdapter(query, conn);
+            //    DataTable dt = new DataTable();
+            //    adap.Fill(dt);
+            //    dataGridView1.DataSource = dt;
 
-            }
-            catch
-            {
+            //    conn.Close();
 
-            }
+            //}
+            //catch
+            //{
+
+            //}
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+
             New_Transaction nt = new New_Transaction();
             nt.Show();
         }
@@ -70,31 +70,22 @@ namespace Test1
             string x5 = "";
             string x6 = "";
             string x7 = "";
+            //  x1 = AllTransactions[dataListView1.SelectedIndex];   // x
+            x1 = AllTransactions[dataListView1.SelectedIndex].code;
+            x2 = AllTransactions[dataListView1.SelectedIndex].date;   // date
+            x3 = AllTransactions[dataListView1.SelectedIndex].clientid.ToString();    // client id 
+            x4 = AllTransactions[dataListView1.SelectedIndex].totalamount.ToString();    // total
+            x5 = AllTransactions[dataListView1.SelectedIndex].items;   // items
+            x6 = AllTransactions[dataListView1.SelectedIndex].sellreturn.ToString();    //sellbuy
+            x7 = AllTransactions[dataListView1.SelectedIndex].clientname;    // client name
 
-            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-            {
-                string value1 = row.Cells[0].Value.ToString();
-                string value2 = row.Cells[1].Value.ToString();
-                string value3 = row.Cells[2].Value.ToString();
-                string value4 = row.Cells[3].Value.ToString();
-                string value5 = row.Cells[4].Value.ToString();
-                string value6 = row.Cells[5].Value.ToString();
-                string value7 = row.Cells[6].Value.ToString();
-                x1 = value1;   // x
-                x2 = value2;   // date
-                x3 = value3;    // client id 
-                x4 = value4;    // total
-                x5 = value5;   // items
-                x6 = value6;    //sellbuy
-                x7 = value7;    // client name
-                MessageBox.Show(value1+"    "+ value2 + "    " + value3 + "    " + value4 + "    " + value5 + "    " + value6 + "    " + value7 + "    "  );
-            }
+
 
             if (!string.IsNullOrEmpty(x1) && !string.IsNullOrEmpty(x2) && !string.IsNullOrEmpty(x3)
-                && !string.IsNullOrEmpty(x4)&&!string.IsNullOrEmpty(x5) &&!string.IsNullOrEmpty(x6)
+                && !string.IsNullOrEmpty(x4) && !string.IsNullOrEmpty(x5) && !string.IsNullOrEmpty(x6)
                 && !string.IsNullOrEmpty(x7))
             {
-                returntran rt = new returntran(x1,x2,x3,x4,x5,x6,x7);
+                returntran rt = new returntran(x1, x2, x3, x4, x5, x6, x7);
                 rt.Show();
             }
             else
@@ -104,16 +95,36 @@ namespace Test1
 
         }
 
-      
+
 
         private void datasell(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-            {
-                string value1 = row.Cells[1].Value.ToString();
-              
-               // MessageBox.Show(value1);
-            }
+            //foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            //{
+            //    string value1 = row.Cells[1].Value.ToString();
+
+            //   // MessageBox.Show(value1);
+            //}
+        }
+
+        private void Transactions_Load(object sender, EventArgs e)
+        {
+            AllTransactions = util.GetAllTransactions();
+            dataListView1.SetObjects(AllTransactions);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string x1, x2, x3, x4, x5, x6, x7;
+
+            x1 = AllTransactions[dataListView1.SelectedIndex].code;
+            x2 = AllTransactions[dataListView1.SelectedIndex].date;   // date
+            x3 = AllTransactions[dataListView1.SelectedIndex].clientid.ToString();    // client id 
+            x4 = AllTransactions[dataListView1.SelectedIndex].totalamount.ToString();    // total
+            x5 = AllTransactions[dataListView1.SelectedIndex].items;   // items
+            x6 = AllTransactions[dataListView1.SelectedIndex].sellreturn.ToString();    //sellbuy
+            x7 = AllTransactions[dataListView1.SelectedIndex].clientname;    // client name
+
         }
     }
 }

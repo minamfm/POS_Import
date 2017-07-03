@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 struct Transaction
 {
+    public string code;
     public string date;
     public int clientid;
     public float totalamount;
@@ -19,6 +20,17 @@ struct Transaction
 
     public Transaction(string date, int clientid, float totalamount, string items, int sellreturn, string clientname)
     {
+        this.code = "";
+        this.date = date;
+        this.clientid = clientid;
+        this.totalamount = totalamount;
+        this.items = items;
+        this.sellreturn = sellreturn;
+        this.clientname = clientname;
+    }
+    public Transaction(string code, string date, int clientid, float totalamount, string items, int sellreturn, string clientname)
+    {
+        this.code = code;
         this.date = date;
         this.clientid = clientid;
         this.totalamount = totalamount;
