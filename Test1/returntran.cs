@@ -70,7 +70,7 @@ namespace Test1
             buysell1 = buysell;
             clientname1 = clientname;
 
-            MessageBox.Show(x1 + date1);
+          //  MessageBox.Show(x1 + date1);
 
 
           
@@ -115,18 +115,18 @@ namespace Test1
             while (stuff1 != "")
             {
 
-                MessageBox.Show(stuff1);
+           //     MessageBox.Show(stuff1);
                 if (stuff1.IndexOf("&&++") >= 0)
                 {   
                     
                     temp_code = stuff1.Substring(0, stuff1.IndexOf("&&++"));
                     stuff1 = stuff1.Substring(stuff1.IndexOf("&&++") + 4);
-                    MessageBox.Show(stuff1);
+         //           MessageBox.Show(stuff1);
                     if (stuff1.IndexOf("++&&") >= 0)
                     {
                         temp_qty = stuff1.Substring(0, stuff1.IndexOf("++&&"));
                         stuff1 = stuff1.Substring(stuff1.IndexOf("++&&") + 4);
-                        MessageBox.Show(stuff1);
+           //             MessageBox.Show(stuff1);
                     }
 
                     itemx.Add(new itemcdeqty(temp_code, temp_qty));
