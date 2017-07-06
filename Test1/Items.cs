@@ -42,7 +42,6 @@ namespace Test1
 
         SqlConnection conn;
 
-        SqlDataAdapter adap;
         DataTable dt;
         //SqlCommandBuilder commandbuilder;
         string path;
@@ -55,23 +54,7 @@ namespace Test1
         }
 
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-            DialogResult dialogResult = MessageBox.Show("Are you sure want to update", "Check ? ", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-
-            
-                    }
-                    
-                
-                else
-                {
-                MessageBox.Show("Nothing done");
-                
-            }
-        }
+        
 
        
 
@@ -293,11 +276,6 @@ namespace Test1
                 }
 
                 dataListView1.SetObjects(its);
-                foreach (itemdb it in its)
-                {
-                    MessageBox.Show(it.code + "  " + it.name + "  " + it.supplier + "  " + it.type+"   " + Convert.ToString(it.qty) + "  "
-                        + Convert.ToString(it.qtyunit) + "     " + Convert.ToString(it.price));
-                }
 
 
 
@@ -311,47 +289,57 @@ namespace Test1
 
 
 
-         DataTable ConvertListToDataTable(List<itemdb> list)
-        {
-            DataTable table = new DataTable();
+        //DataTable ConvertListToDataTable(List<itemdb> list)
+        //{
+        //    DataTable table = new DataTable();
 
-           
-                table.Columns.Add("Code", typeof(string));
-            table.Columns.Add("name", typeof(string));
-            table.Columns.Add("supplier", typeof(string));
-            table.Columns.Add("type", typeof(string));
-            table.Columns.Add("qty", typeof(int));
-            table.Columns.Add("qtyunit", typeof(int));
-            table.Columns.Add("price", typeof(float));
 
-            foreach (itemdb it in list)
-            {
-                table.Rows.Add(it.code ,it.name , it.supplier, it.type,it.qty,it.qtyunit,it.price);
-            }
+        //    table.Columns.Add("Code", typeof(string));
+        //    table.Columns.Add("name", typeof(string));
+        //    table.Columns.Add("supplier", typeof(string));
+        //    table.Columns.Add("type", typeof(string));
+        //    table.Columns.Add("qty", typeof(int));
+        //    table.Columns.Add("qtyunit", typeof(int));
+        //    table.Columns.Add("price", typeof(float));
 
-            return table;
-        }
+        //    //table.Columns.Add();
+        //    //table.Columns.Add();
+        //    //table.Columns.Add();
+        //    //table.Columns.Add();
+        //    //table.Columns.Add();
+        //    //table.Columns.Add();
+        //    //table.Columns.Add();
 
-        private void button1_Click_1(object sender, EventArgs e)
+        //    foreach (itemdb it in list)
+        //    {
+        //        table.Rows.Add(it.code, it.name, it.supplier, it.type, it.qty, it.qtyunit, it.price);
+        //    }
+
+        //    return table;
+        //}
+
+        private void button1_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Are you sure want to update", "Check ? ", MessageBoxButtons.YesNo);
             if(dialogResult == DialogResult.Yes)
             {
                 try
                 {
-                    DataTable table = ConvertListToDataTable(its);
-                    
-                    SqlConnection conn = new SqlConnection(util.GetConnectionString());
-                   
-                    SqlDataAdapter adap = new SqlDataAdapter(@"Select * From Item",conn);
-                   
-                    SqlCommandBuilder cb = new SqlCommandBuilder(adap);
-                    conn.Open();
-                    adap.Update(table);
+                   // DataTable table = ConvertListToDataTable(its);
+                    conn = new SqlConnection(util.GetConnectionString());
 
-                    conn.Close();
+                    foreach (itemdb it in its)
+                    {
+                        conn.Open();
+                        SqlDataAdapter adap = new SqlDataAdapter("Update Item Set Code=N'" +  it.code + "', name =N'" + it.name + "', supplier=N'" + it.supplier + "', type=N'" + it.type + "', qty='" + it.qty + "', qtyunit='" + it.qtyunit + "',price='" + it.price + "' WHERE Code ='" + it.code + "'", conn);
 
-                   
+                        adap.SelectCommand.ExecuteNonQuery();
+                        conn.Close();
+                        MessageBox.Show("Update 1 ");
+                    }
+             
+
+
 
                 }
                 catch

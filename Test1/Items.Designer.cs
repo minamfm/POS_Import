@@ -82,36 +82,43 @@
             // code
             // 
             this.code.AspectName = "code";
+            this.code.Groupable = false;
             this.code.Text = "Code";
             // 
             // name
             // 
             this.name.AspectName = "name";
+            this.name.Groupable = false;
             this.name.Text = "Item Name";
             // 
             // supplier
             // 
             this.supplier.AspectName = "supplier";
+            this.supplier.Groupable = false;
             this.supplier.Text = "Supplier";
             // 
             // type
             // 
             this.type.AspectName = "type";
+            this.type.Groupable = false;
             this.type.Text = "type";
             // 
             // qty
             // 
             this.qty.AspectName = "qty";
+            this.qty.Groupable = false;
             this.qty.Text = "Quantity";
             // 
             // qtyunit
             // 
             this.qtyunit.AspectName = "qtyunit";
+            this.qtyunit.Groupable = false;
             this.qtyunit.Text = "Quantity per unit";
             // 
             // price
             // 
             this.price.AspectName = "price";
+            this.price.Groupable = false;
             this.price.Text = "Price";
             // 
             // textBox1
@@ -124,13 +131,13 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 405);
+            this.button1.Location = new System.Drawing.Point(12, 390);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(84, 46);
             this.button1.TabIndex = 2;
             this.button1.Text = "Refresh";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox2
             // 
