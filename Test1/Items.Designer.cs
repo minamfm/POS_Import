@@ -28,14 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataListView1 = new BrightIdeasSoftware.DataListView();
-            this.code = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.name = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.supplier = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.type = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.qty = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.qtyunit = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.price = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -47,79 +39,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
+            this.dataListView1 = new BrightIdeasSoftware.DataListView();
+            this.code = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.name = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.supplier = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.type = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.qty = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.qtyunit = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.price = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             ((System.ComponentModel.ISupportInitialize)(this.dataListView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataListView1
-            // 
-            this.dataListView1.AllColumns.Add(this.code);
-            this.dataListView1.AllColumns.Add(this.name);
-            this.dataListView1.AllColumns.Add(this.supplier);
-            this.dataListView1.AllColumns.Add(this.type);
-            this.dataListView1.AllColumns.Add(this.qty);
-            this.dataListView1.AllColumns.Add(this.qtyunit);
-            this.dataListView1.AllColumns.Add(this.price);
-            this.dataListView1.CellEditActivation = BrightIdeasSoftware.ObjectListView.CellEditActivateMode.SingleClick;
-            this.dataListView1.CellEditUseWholeCell = false;
-            this.dataListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.code,
-            this.name,
-            this.supplier,
-            this.type,
-            this.qty,
-            this.qtyunit,
-            this.price});
-            this.dataListView1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dataListView1.DataSource = null;
-            this.dataListView1.Location = new System.Drawing.Point(12, 50);
-            this.dataListView1.Name = "dataListView1";
-            this.dataListView1.Size = new System.Drawing.Size(875, 334);
-            this.dataListView1.TabIndex = 0;
-            this.dataListView1.UseCompatibleStateImageBehavior = false;
-            this.dataListView1.View = System.Windows.Forms.View.List;
-            this.dataListView1.CellEditFinished += new BrightIdeasSoftware.CellEditEventHandler(this.dataListView1_CellEditFinished);
-            // 
-            // code
-            // 
-            this.code.AspectName = "code";
-            this.code.Groupable = false;
-            this.code.Text = "Code";
-            // 
-            // name
-            // 
-            this.name.AspectName = "name";
-            this.name.Groupable = false;
-            this.name.Text = "Item Name";
-            // 
-            // supplier
-            // 
-            this.supplier.AspectName = "supplier";
-            this.supplier.Groupable = false;
-            this.supplier.Text = "Supplier";
-            // 
-            // type
-            // 
-            this.type.AspectName = "type";
-            this.type.Groupable = false;
-            this.type.Text = "type";
-            // 
-            // qty
-            // 
-            this.qty.AspectName = "qty";
-            this.qty.Groupable = false;
-            this.qty.Text = "Quantity";
-            // 
-            // qtyunit
-            // 
-            this.qtyunit.AspectName = "qtyunit";
-            this.qtyunit.Groupable = false;
-            this.qtyunit.Text = "Quantity per unit";
-            // 
-            // price
-            // 
-            this.price.AspectName = "price";
-            this.price.Groupable = false;
-            this.price.Text = "Price";
             // 
             // textBox1
             // 
@@ -214,6 +143,77 @@
             this.textBox5.Size = new System.Drawing.Size(159, 20);
             this.textBox5.TabIndex = 11;
             this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
+            // 
+            // dataListView1
+            // 
+            this.dataListView1.AllColumns.Add(this.code);
+            this.dataListView1.AllColumns.Add(this.name);
+            this.dataListView1.AllColumns.Add(this.supplier);
+            this.dataListView1.AllColumns.Add(this.type);
+            this.dataListView1.AllColumns.Add(this.qty);
+            this.dataListView1.AllColumns.Add(this.qtyunit);
+            this.dataListView1.AllColumns.Add(this.price);
+            this.dataListView1.CellEditActivation = BrightIdeasSoftware.ObjectListView.CellEditActivateMode.SingleClick;
+            this.dataListView1.CellEditUseWholeCell = false;
+            this.dataListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.code,
+            this.name,
+            this.supplier,
+            this.type,
+            this.qty,
+            this.qtyunit,
+            this.price});
+            this.dataListView1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dataListView1.DataSource = null;
+            this.dataListView1.Location = new System.Drawing.Point(12, 50);
+            this.dataListView1.Name = "dataListView1";
+            this.dataListView1.Size = new System.Drawing.Size(875, 334);
+            this.dataListView1.TabIndex = 0;
+            this.dataListView1.UseCompatibleStateImageBehavior = false;
+            this.dataListView1.View = System.Windows.Forms.View.List;
+            this.dataListView1.CellEditFinished += new BrightIdeasSoftware.CellEditEventHandler(this.dataListView1_CellEditFinished);
+            // 
+            // code
+            // 
+            this.code.AspectName = "code";
+            this.code.Groupable = false;
+            this.code.Text = "code";
+            // 
+            // name
+            // 
+            this.name.AspectName = "name";
+            this.name.Groupable = false;
+            this.name.Text = "Item Name";
+            // 
+            // supplier
+            // 
+            this.supplier.AspectName = "supplier";
+            this.supplier.Groupable = false;
+            this.supplier.Text = "Supplier";
+            // 
+            // type
+            // 
+            this.type.AspectName = "type";
+            this.type.Groupable = false;
+            this.type.Text = "type";
+            // 
+            // qty
+            // 
+            this.qty.AspectName = "qty";
+            this.qty.Groupable = false;
+            this.qty.Text = "Quantity";
+            // 
+            // qtyunit
+            // 
+            this.qtyunit.AspectName = "qtyunit";
+            this.qtyunit.Groupable = false;
+            this.qtyunit.Text = "Quantity per unit";
+            // 
+            // price
+            // 
+            this.price.AspectName = "price";
+            this.price.Groupable = false;
+            this.price.Text = "Price";
             // 
             // Items
             // 

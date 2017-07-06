@@ -146,7 +146,7 @@ namespace Test1
 
                 itemdb tempitem = itemf[dataListView1.SelectedIndex];
 
-                if (e.Column.Text == "Code")
+                if (e.Column.Text == "code")
                 {
                     string test = Convert.ToString(e.NewValue);
                     if (!string.IsNullOrEmpty(test))
