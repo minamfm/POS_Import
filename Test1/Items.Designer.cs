@@ -39,15 +39,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.dataListView1 = new BrightIdeasSoftware.DataListView();
-            this.code = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.name = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.supplier = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.type = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.qty = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.qtyunit = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.price = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            ((System.ComponentModel.ISupportInitialize)(this.dataListView1)).BeginInit();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -144,82 +138,30 @@
             this.textBox5.TabIndex = 11;
             this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
-            // dataListView1
+            // dataGridView1
             // 
-            this.dataListView1.AllColumns.Add(this.code);
-            this.dataListView1.AllColumns.Add(this.name);
-            this.dataListView1.AllColumns.Add(this.supplier);
-            this.dataListView1.AllColumns.Add(this.type);
-            this.dataListView1.AllColumns.Add(this.qty);
-            this.dataListView1.AllColumns.Add(this.qtyunit);
-            this.dataListView1.AllColumns.Add(this.price);
-            this.dataListView1.CellEditActivation = BrightIdeasSoftware.ObjectListView.CellEditActivateMode.SingleClick;
-            this.dataListView1.CellEditUseWholeCell = false;
-            this.dataListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.code,
-            this.name,
-            this.supplier,
-            this.type,
-            this.qty,
-            this.qtyunit,
-            this.price});
-            this.dataListView1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dataListView1.DataSource = null;
-            this.dataListView1.Location = new System.Drawing.Point(12, 50);
-            this.dataListView1.Name = "dataListView1";
-            this.dataListView1.Size = new System.Drawing.Size(875, 334);
-            this.dataListView1.TabIndex = 0;
-            this.dataListView1.UseCompatibleStateImageBehavior = false;
-            this.dataListView1.View = System.Windows.Forms.View.List;
-            this.dataListView1.CellEditFinished += new BrightIdeasSoftware.CellEditEventHandler(this.dataListView1_CellEditFinished);
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.check});
+            this.dataGridView1.Location = new System.Drawing.Point(12, 50);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(868, 334);
+            this.dataGridView1.TabIndex = 12;
             // 
-            // code
+            // check
             // 
-            this.code.AspectName = "code";
-            this.code.Groupable = false;
-            this.code.Text = "code";
-            // 
-            // name
-            // 
-            this.name.AspectName = "name";
-            this.name.Groupable = false;
-            this.name.Text = "Item Name";
-            // 
-            // supplier
-            // 
-            this.supplier.AspectName = "supplier";
-            this.supplier.Groupable = false;
-            this.supplier.Text = "Supplier";
-            // 
-            // type
-            // 
-            this.type.AspectName = "type";
-            this.type.Groupable = false;
-            this.type.Text = "type";
-            // 
-            // qty
-            // 
-            this.qty.AspectName = "qty";
-            this.qty.Groupable = false;
-            this.qty.Text = "Quantity";
-            // 
-            // qtyunit
-            // 
-            this.qtyunit.AspectName = "qtyunit";
-            this.qtyunit.Groupable = false;
-            this.qtyunit.Text = "Quantity per unit";
-            // 
-            // price
-            // 
-            this.price.AspectName = "price";
-            this.price.Groupable = false;
-            this.price.Text = "Price";
+            this.check.HeaderText = "Selected";
+            this.check.Name = "check";
+            this.check.Width = 55;
             // 
             // Items
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(892, 552);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -231,27 +173,17 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.dataListView1);
             this.Name = "Items";
             this.Text = "Items";
             this.Load += new System.EventHandler(this.Items_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataListView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private BrightIdeasSoftware.DataListView dataListView1;
         private System.Windows.Forms.TextBox textBox1;
-        private BrightIdeasSoftware.OLVColumn code;
-        private BrightIdeasSoftware.OLVColumn name;
-        private BrightIdeasSoftware.OLVColumn supplier;
-        private BrightIdeasSoftware.OLVColumn type;
-        private BrightIdeasSoftware.OLVColumn qty;
-        private BrightIdeasSoftware.OLVColumn qtyunit;
-        private BrightIdeasSoftware.OLVColumn price;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
@@ -262,5 +194,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn check;
     }
 }

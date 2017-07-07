@@ -43,7 +43,10 @@ namespace Test1
         SqlConnection conn;
 
         DataTable dt;
-        //SqlCommandBuilder commandbuilder;
+        SqlDataAdapter adap;
+
+        SqlCommandBuilder cmdb;
+        SqlCommand cmdq;
         string path;
 
         public Items()
@@ -60,34 +63,30 @@ namespace Test1
 
         private void Items_Load(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(util.GetConnectionString());
-            string query = "Select * from Item";
-
-            SqlCommand cmdq = new SqlCommand(query, conn);
-
-            SqlDataReader rdr;
-
-            dataListView1.View = View.Details;
-            dataListView1.GridLines = true;
-            dataListView1.FullRowSelect = true;
-            dataListView1.ShowGroups = false;
-           
-         
-
-            try
+             try
             {
+                SqlConnection conn = new SqlConnection(util.GetConnectionString());
+                string query = "Select * from Item";
+
+                adap = new SqlDataAdapter(query, conn);
                 conn.Open();
+                dt = new DataTable();
+                adap.Fill(dt);
+                dataGridView1.DataSource = dt;            
+                conn.Close();
+
+                 cmdq = new SqlCommand(query, conn);
+                conn.Open();
+                SqlDataReader rdr;
                 rdr = cmdq.ExecuteReader();
 
                 while (rdr.Read())
                 {
-                    itemdb itm = new itemdb(rdr.GetString(0), rdr.GetString(1), rdr.GetString(2),rdr.GetString(3),(Int32)rdr.GetValue(4), (Int32) rdr.GetValue(5) , Convert.ToSingle(rdr.GetValue(6)));
-                    its.Add(itm);
+                    its.Add(new itemdb(rdr.GetString(0), rdr.GetString(1), rdr.GetString(2), rdr.GetString(3), Convert.ToInt32(rdr.GetValue(4)), Convert.ToInt32(rdr.GetValue(5)), Convert.ToSingle(rdr.GetValue(6))));
                 }
-                dataListView1.SetObjects(its);
+
                 rdr.Close();
                 conn.Close();
-
             }
             catch
             {
@@ -116,207 +115,81 @@ namespace Test1
         {
             List<itemdb> itemfilter = new List<itemdb>();
             itemfilter = its;
+            DataTable temp = new DataTable();
+
 
             itemfilter = itemfilter.FindAll(r => r.code.Contains(textBox1.Text));
-            dataListView1.SetObjects(itemfilter);
-        }
 
+            temp = ConvertListToDataTable(itemfilter);
+
+            dataGridView1.DataSource = temp;
+
+            if (string.IsNullOrEmpty(textBox1.Text))
+            {
+                this.Refresh();
+            }
+
+
+        }
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
             List<itemdb> itemfilter = new List<itemdb>();
             itemfilter = its;
+            DataTable temp = new DataTable();
+
+
             itemfilter = itemfilter.FindAll(r => r.name.Contains(textBox4.Text));
-            dataListView1.SetObjects(itemfilter);
+
+            temp = ConvertListToDataTable(itemfilter);
+
+            dataGridView1.DataSource = temp;
+
+            if (string.IsNullOrEmpty(textBox4.Text))
+            {
+                this.Refresh();
+            }
+
+
         }
+
 
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
             List<itemdb> itemfilter = new List<itemdb>();
             itemfilter = its;
             itemfilter = itemfilter.FindAll(r => r.supplier.Contains(textBox5.Text));
-            dataListView1.SetObjects(itemfilter);
+            //dataListView1.SetObjects(itemfilter);
         }
 
-        private void dataListView1_CellEditFinished(object sender, BrightIdeasSoftware.CellEditEventArgs e)
+
+        DataTable ConvertListToDataTable(List<itemdb> list)
         {
-            try
+            DataTable table = new DataTable();
+
+
+            table.Columns.Add("Code", typeof(string));
+            table.Columns.Add("name", typeof(string));
+            table.Columns.Add("supplier", typeof(string));
+            table.Columns.Add("type", typeof(string));
+            table.Columns.Add("qty", typeof(int));
+            table.Columns.Add("qtyunit", typeof(int));
+            table.Columns.Add("price", typeof(float));
+
+            //table.Columns.Add();
+            //table.Columns.Add();
+            //table.Columns.Add();
+            //table.Columns.Add();
+            //table.Columns.Add();
+            //table.Columns.Add();
+            //table.Columns.Add();
+
+            foreach (itemdb it in list)
             {
-                List<itemdb> itemf = new List<itemdb>();
-                itemf = its;
-
-                itemdb tempitem = itemf[dataListView1.SelectedIndex];
-
-                if (e.Column.Text == "code")
-                {
-                    string test = Convert.ToString(e.NewValue);
-                    if (!string.IsNullOrEmpty(test))
-                    {
-                        tempitem.code = test;
-                        itemf[dataListView1.SelectedIndex] = tempitem;
-                        int index = its.FindIndex(r => r.code == tempitem.code);
-                        its[index] = tempitem;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Please enter a value");
-                    }
-                }
-
-                else if (e.Column.Text == "Item Name")
-                {
-                    string test = Convert.ToString(e.NewValue);
-                    if (!string.IsNullOrEmpty(test))
-                    {
-                        tempitem.name = test;
-                        itemf[dataListView1.SelectedIndex] = tempitem;
-                        int index = its.FindIndex(r => r.name == tempitem.name);
-                        its[index] = tempitem;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Please enter a value");
-                    }
-                }
-                else if (e.Column.Text == "Supplier")
-                {
-                    string test = Convert.ToString(e.NewValue);
-                    if (!string.IsNullOrEmpty(test))
-                    {
-                        tempitem.supplier = test;
-                        itemf[dataListView1.SelectedIndex] = tempitem;
-                        int index = its.FindIndex(r => r.supplier == tempitem.supplier);
-                        its[index] = tempitem;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Please enter a value");
-                    }
-                } 
-                else if (e.Column.Text == "type")
-                {
-                    string test = Convert.ToString(e.NewValue);
-                    if (!string.IsNullOrEmpty(test))
-                    {
-                        tempitem.type = test;
-                        itemf[dataListView1.SelectedIndex] = tempitem;
-                        int index = its.FindIndex(r => r.type == tempitem.type);
-                        its[index] = tempitem;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Please enter a value");
-                    }
-                }
-                else if (e.Column.Text == "Quantity")
-                {
-                    string test = Convert.ToString(e.NewValue);
-                    if (!string.IsNullOrEmpty(test))
-                    {
-                        try {
-                            tempitem.qty = Convert.ToInt32(test);
-                        } catch
-                        {
-                            MessageBox.Show("Please insert a good value");
-                            return;
-                        } 
-                        itemf[dataListView1.SelectedIndex] = tempitem;
-                        int index = its.FindIndex(r => r.qty == tempitem.qty);
-                        its[index] = tempitem;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Please enter a value");
-                    }
-                }
-                else if (e.Column.Text == "Quantity per unit")
-                {
-                    string test = Convert.ToString(e.NewValue);
-                    if (!string.IsNullOrEmpty(test))
-                    {
-                        try
-                        {
-                            tempitem.qtyunit = Convert.ToInt32(test);
-                        }
-                        catch
-                        {
-                            MessageBox.Show("Please insert a good value");
-                            return;
-                        }
-                        itemf[dataListView1.SelectedIndex] = tempitem;
-                        int index = its.FindIndex(r => r.qtyunit == tempitem.qtyunit);
-                        its[index] = tempitem;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Please enter a value");
-                    }
-                }
-                else if (e.Column.Text == "Price")
-                {
-                    string test = Convert.ToString(e.NewValue);
-                    if (!string.IsNullOrEmpty(test))
-                    {
-                        try
-                        {
-                            tempitem.price = Convert.ToSingle(test);
-                        }
-                        catch
-                        {
-                            MessageBox.Show("Please insert a good value");
-                            return;
-                        }
-                        itemf[dataListView1.SelectedIndex] = tempitem;
-                        int index = its.FindIndex(r => r.price == tempitem.price);
-                        its[index] = tempitem;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Please enter a value");
-                    }
-                }
-
-                dataListView1.SetObjects(its);
-
-
-
-
+                table.Rows.Add(it.code, it.name, it.supplier, it.type, it.qty, it.qtyunit, it.price);
             }
-            catch
-            {
-                MessageBox.Show("Editing error");
-            }
+
+            return table;
         }
-
-
-
-        //DataTable ConvertListToDataTable(List<itemdb> list)
-        //{
-        //    DataTable table = new DataTable();
-
-
-        //    table.Columns.Add("Code", typeof(string));
-        //    table.Columns.Add("name", typeof(string));
-        //    table.Columns.Add("supplier", typeof(string));
-        //    table.Columns.Add("type", typeof(string));
-        //    table.Columns.Add("qty", typeof(int));
-        //    table.Columns.Add("qtyunit", typeof(int));
-        //    table.Columns.Add("price", typeof(float));
-
-        //    //table.Columns.Add();
-        //    //table.Columns.Add();
-        //    //table.Columns.Add();
-        //    //table.Columns.Add();
-        //    //table.Columns.Add();
-        //    //table.Columns.Add();
-        //    //table.Columns.Add();
-
-        //    foreach (itemdb it in list)
-        //    {
-        //        table.Rows.Add(it.code, it.name, it.supplier, it.type, it.qty, it.qtyunit, it.price);
-        //    }
-
-        //    return table;
-        //}
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -325,21 +198,29 @@ namespace Test1
             {
                 try
                 {
-                   // DataTable table = ConvertListToDataTable(its);
-                    conn = new SqlConnection(util.GetConnectionString());
+                    //DataTable table = ConvertListToDataTable(its);
+                    // SqlDataAdapter adap = new SqlDataAdapter("Update Item Set Code=N'" +  it.code + "', name =N'" + it.name + "', supplier=N'" + it.supplier + "', type=N'" + it.type + "', qty='" + it.qty + "', qtyunit='" + it.qtyunit + "',price='" + it.price + "' WHERE Code ='" + it.code + "'", conn);
+                    //adap.SelectCommand.ExecuteNonQuery();
 
+                    conn = new SqlConnection(util.GetConnectionString());
+                    conn.Open();
+                   
+                    string query = "Select * from Item";
+
+                    adap = new SqlDataAdapter(query, conn);
+                    SqlCommandBuilder cmdb = new SqlCommandBuilder(adap);
+                    adap.Update(dt);
+
+                    conn.Close();
                     foreach (itemdb it in its)
                     {
-                        conn.Open();
-                        SqlDataAdapter adap = new SqlDataAdapter("Update Item Set Code=N'" +  it.code + "', name =N'" + it.name + "', supplier=N'" + it.supplier + "', type=N'" + it.type + "', qty='" + it.qty + "', qtyunit='" + it.qtyunit + "',price='" + it.price + "' WHERE Code ='" + it.code + "'", conn);
 
-                        adap.SelectCommand.ExecuteNonQuery();
-                        conn.Close();
-                        MessageBox.Show("Update 1 ");
+                        MessageBox.Show(it.code);
                     }
-             
 
 
+
+                    this.Refresh();
 
                 }
                 catch
@@ -356,6 +237,7 @@ namespace Test1
 
         }
 
+       
 
         //public void ExportEx(ListView gr, string xlname, string path)
         //{
