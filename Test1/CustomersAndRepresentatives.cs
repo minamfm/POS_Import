@@ -95,8 +95,8 @@ namespace Test1
 
         private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
+            if (listBox3.SelectedIndex == -1)
+                return;
                 ClientName.Text = temp_clients[listBox3.SelectedIndex].Name;
                 Purchases.Text = Convert.ToString(temp_clients[listBox3.SelectedIndex].totalsales);
                 Cash.Text = Convert.ToString(temp_clients[listBox3.SelectedIndex].cash);
@@ -106,11 +106,6 @@ namespace Test1
                 Purchases.Visible = true;
                 Cash.Visible = true;
                 Credit.Visible = true;
-            }
-            catch
-            {
-                
-            }
         }
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
