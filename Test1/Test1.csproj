@@ -61,10 +61,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomersAndRepresentatives.cs">
+    <Compile Include="CustomersAndReps\CustomersAndRepresentatives.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CustomersAndRepresentatives.Designer.cs">
+    <Compile Include="CustomersAndReps\CustomersAndRepresentatives.Designer.cs">
       <DependentUpon>CustomersAndRepresentatives.cs</DependentUpon>
     </Compile>
     <Compile Include="Inventorygrid.cs">
@@ -78,6 +78,12 @@
     </Compile>
     <Compile Include="Items.Designer.cs">
       <DependentUpon>Items.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomersAndReps\NewCustomerorRep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomersAndReps\NewCustomerorRep.Designer.cs">
+      <DependentUpon>NewCustomerorRep.cs</DependentUpon>
     </Compile>
     <Compile Include="newitemcheckbox.cs">
       <SubType>Form</SubType>
@@ -130,7 +136,13 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="CustomersAndRepresentatives.resx">
+    <Compile Include="CustomersAndReps\ViewRep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomersAndReps\ViewRep.Designer.cs">
+      <DependentUpon>ViewRep.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CustomersAndReps\CustomersAndRepresentatives.resx">
       <DependentUpon>CustomersAndRepresentatives.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventorygrid.resx">
@@ -141,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomersAndReps\NewCustomerorRep.resx">
+      <DependentUpon>NewCustomerorRep.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="newitem.resx">
       <DependentUpon>newitem.cs</DependentUpon>
@@ -171,6 +186,9 @@
     </Compile>
     <EmbeddedResource Include="Transactions.resx">
       <DependentUpon>Transactions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomersAndReps\ViewRep.resx">
+      <DependentUpon>ViewRep.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
