@@ -41,8 +41,11 @@ public struct Client
     public string itemsid;
     public float cash;
     public float debit;
+    public string mobi;
+    public string companyname;
+    public string companyadd;
 
-    public Client(long id, string name, float totalsales, string itemsid, float cash, float debit)
+    public Client(long id, string name, float totalsales, string itemsid, float cash, float debit, string mobi, string companyname, string companyadd)
     {
         this.id = id;
         this.name = name;
@@ -50,6 +53,10 @@ public struct Client
         this.itemsid = itemsid;
         this.cash = cash;
         this.debit = debit;
+        this.mobi = mobi;
+        this.companyname = companyname;
+        this.companyadd = companyadd;
+        
     }
     public string Name
     {

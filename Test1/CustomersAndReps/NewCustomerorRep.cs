@@ -54,10 +54,12 @@ namespace Test1
             if (mode == modes.client)
             {
                 panel1.Visible = true;
+                panel2.Visible = false;
             }
             else if(mode == modes.rep)
             {
                 panel1.Visible = false;
+                panel2.Visible = true;
             }
         }
 
@@ -65,12 +67,22 @@ namespace Test1
         {
             if(mode==modes.client)
             {
-
+                Client client = new Client(Convert.ToInt32(idbox.Text), textBox1.Text, Convert.ToSingle(textBox2.Text), "", Convert.ToSingle(textBox3.Text), Convert.ToSingle(textBox4.Text),textBox5.Text, textBox6.Text, textBox7.Text);
+                Utilities utils = new Utilities();
+                utils.InsertClient(client, selected_rep);
             }
             else if(mode == modes.rep)
             {
-
+                Rep rep = new Rep(0, textBox1.Text, 0, "", Convert.ToSingle(textBox11.Text));
             }
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+                mode = modes.rep;
+            else mode = modes.client;
+            ModeAdapter();
         }
     }
 }

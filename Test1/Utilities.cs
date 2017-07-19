@@ -34,7 +34,7 @@ namespace Test1
 
             while (rdr.Read())
             {
-                clients.Add(new Client(rdr.GetInt32(0), rdr.GetString(1), (float)(double)rdr.GetValue(2), rdr.GetString(3), (float)(double)rdr.GetValue(4), (float)(double)rdr.GetValue(5)));
+                clients.Add(new Client(rdr.GetInt32(0), rdr.GetString(1), (float)(double)rdr.GetValue(2), rdr.GetString(3), (float)(double)rdr.GetValue(4), (float)(double)rdr.GetValue(5), rdr.GetString(6), rdr.GetString(7), rdr.GetString(8)));
             }
             rdr.Close();
             conn.Close();
@@ -159,6 +159,7 @@ namespace Test1
                     }
                 }
                     conn.Close();
+                ret = true;
             }
             catch
             {
@@ -166,5 +167,43 @@ namespace Test1
             }
             return ret;
         }
+        public bool InsertClient(Client client, Rep responsible_rep)
+        {
+            bool ret = false;
+            SqlConnection conn = new SqlConnection(GetConnectionString());
+
+            string command = "insert into Client (clientid,cname,totalsales,itemsid,cash,debit,mobi,companyname,companyadd) values ('"
+                + client.id + "','" + client.Name + "','" + client.totalsales + "','none" + "','" + client.cash + "','" + client.debit + "','" + client.mobi + "','" + client.companyname + "','" + client.companyadd + "')";
+
+            string select_command = "SELECT IDENT_CURRENT('Client')";
+
+
+            SqlCommand sel_cmd = new SqlCommand(select_command, conn);
+            SqlCommand comm = new SqlCommand(command, conn);
+
+            SqlDataReader rdr;
+
+            try
+            {
+                conn.Open();
+                comm.ExecuteNonQuery();
+
+                responsible_rep.clientids += "," + client.id;
+
+                string CommandRep = "UPDATE Represent SET clientids='" + responsible_rep.clientids + "'WHERE repid='" + responsible_rep.id + "'";
+
+                SqlCommand repcmd = new SqlCommand(CommandRep, conn);
+
+                repcmd.ExecuteNonQuery();
+
+
+            }
+            catch
+            {
+                
+            }
+            return ret;
+        }
+        public bool InsertRep(Rep rep) { return false; }
     }
 }
