@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 struct itemdb
 {
-   public string code;
+    public string code;
     public string name;
     public string supplier;
     public string type;
@@ -18,7 +18,7 @@ struct itemdb
     public int qtyunit;
     public float price;
 
-    public itemdb(string x1 , string x2, string x3, string x4, int x5, int x6, float x7 )
+    public itemdb(string x1, string x2, string x3, string x4, int x5, int x6, float x7)
     {
         this.code = x1;
         this.name = x2;
@@ -42,12 +42,15 @@ namespace Test1
 
         SqlConnection conn;
 
-        DataTable dt;
         SqlDataAdapter adap;
+        // DataSet ds = new DataSet();
+        //   SqlCommandBuilder cmdb;
 
-        SqlCommandBuilder cmdb;
+
+        DataTable dt = new DataTable();
         SqlCommand cmdq;
         string path;
+        string path2;
 
         public Items()
         {
@@ -57,13 +60,14 @@ namespace Test1
         }
 
 
-        
 
-       
+
+
 
         private void Items_Load(object sender, EventArgs e)
         {
-             try
+            textBox2.Enabled = false;
+            try
             {
                 SqlConnection conn = new SqlConnection(util.GetConnectionString());
                 string query = "Select * from Item";
@@ -72,10 +76,10 @@ namespace Test1
                 conn.Open();
                 dt = new DataTable();
                 adap.Fill(dt);
-                dataGridView1.DataSource = dt;            
+                dataGridView1.DataSource = dt;
                 conn.Close();
 
-                 cmdq = new SqlCommand(query, conn);
+                cmdq = new SqlCommand(query, conn);
                 conn.Open();
                 SqlDataReader rdr;
                 rdr = cmdq.ExecuteReader();
@@ -97,69 +101,21 @@ namespace Test1
 
         private void button3_Click(object sender, EventArgs e)
         {
-           
-        {
-            FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
-            DialogResult result = folderBrowserDialog1.ShowDialog();
-            if (result == DialogResult.OK)
+
             {
+                FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
+                DialogResult result = folderBrowserDialog1.ShowDialog();
+                if (result == DialogResult.OK)
+                {
 
-                textBox2.Text = folderBrowserDialog1.SelectedPath;
-                path = textBox1.Text + "\\";
+                    textBox2.Text = folderBrowserDialog1.SelectedPath;
+                    path = textBox2.Text + "\\";
 
+                }
             }
         }
-    }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            List<itemdb> itemfilter = new List<itemdb>();
-            itemfilter = its;
-            DataTable temp = new DataTable();
 
 
-            itemfilter = itemfilter.FindAll(r => r.code.Contains(textBox1.Text));
-
-            temp = ConvertListToDataTable(itemfilter);
-
-            dataGridView1.DataSource = temp;
-
-            if (string.IsNullOrEmpty(textBox1.Text))
-            {
-                this.Refresh();
-            }
-
-
-        }
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-            List<itemdb> itemfilter = new List<itemdb>();
-            itemfilter = its;
-            DataTable temp = new DataTable();
-
-
-            itemfilter = itemfilter.FindAll(r => r.name.Contains(textBox4.Text));
-
-            temp = ConvertListToDataTable(itemfilter);
-
-            dataGridView1.DataSource = temp;
-
-            if (string.IsNullOrEmpty(textBox4.Text))
-            {
-                this.Refresh();
-            }
-
-
-        }
-
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-            List<itemdb> itemfilter = new List<itemdb>();
-            itemfilter = its;
-            itemfilter = itemfilter.FindAll(r => r.supplier.Contains(textBox5.Text));
-            //dataListView1.SetObjects(itemfilter);
-        }
 
 
         DataTable ConvertListToDataTable(List<itemdb> list)
@@ -194,7 +150,7 @@ namespace Test1
         private void button1_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Are you sure want to update", "Check ? ", MessageBoxButtons.YesNo);
-            if(dialogResult == DialogResult.Yes)
+            if (dialogResult == DialogResult.Yes)
             {
                 try
                 {
@@ -204,7 +160,7 @@ namespace Test1
 
                     conn = new SqlConnection(util.GetConnectionString());
                     conn.Open();
-                   
+
                     string query = "Select * from Item";
 
                     adap = new SqlDataAdapter(query, conn);
@@ -219,7 +175,7 @@ namespace Test1
                     }
 
 
-
+                    this.InitializeComponent();
                     this.Refresh();
 
                 }
@@ -228,7 +184,8 @@ namespace Test1
                     MessageBox.Show("Error!");
                 }
 
-            }else
+            }
+            else
             {
                 MessageBox.Show("Nothing Done");
             }
@@ -237,31 +194,142 @@ namespace Test1
 
         }
 
-       
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBox1.Text))
+            {
+                MessageBox.Show("Please Enter a value");
 
-        //public void ExportEx(ListView gr, string xlname, string path)
-        //{
-        //    Microsoft.Office.Interop.Excel.Application obj = new Microsoft.Office.Interop.Excel.Application();
-        //    obj.Application.Workbooks.Add(Type.Missing);
-        //    obj.Columns.ColumnWidth = 25;
-        //    for (int i = 1; i < gr.Columns.Count + 1; i++)
-        //    {
-        //        obj.Cells[1, i] = gr.Columns[i - 1].HeaderText;
-        //    }
-        //    for (int i = 0; i < gr.Rows.Count; i++)
-        //    {
-        //        for (int j = 0; j < gr.Columns.Count; j++)
-        //        {
-        //            obj.Cells[i + 2, j + 1] = gr.Rows[i].Cells[j].Value.ToString();
-        //        }
-        //    }
+            }
+            else
+            {
+                DataView dv = new DataView(dt);
+                if(listBox1.Text == "Code")
+                {
+                  dv.RowFilter = "Code = '"+textBox1.Text+"'";
+                    //dv.RowStateFilter = DataViewRowState.ModifiedCurrent;
+                    dataGridView2.DataSource = dv;
 
-        //    string xlxname = "\\" + xlname;
-        //    obj.ActiveWorkbook.SaveCopyAs(path + xlxname + ".xlsx");
-        //    MessageBox.Show("Done :) ! ");
+                }
+                if (listBox1.Text == "Name")
+                {
+                    dv.RowFilter = "name = '" + textBox1.Text + "'";
+                    //dv.RowStateFilter = DataViewRowState.ModifiedCurrent;
+                    dataGridView2.DataSource = dv;
 
-        //}
+                }
+                if (listBox1.Text == "Supplier")
+                {
+                    dv.RowFilter = "supplier = '" + textBox1.Text + "'";
+                    //dv.RowStateFilter = DataViewRowState.ModifiedCurrent;
+                    dataGridView2.DataSource = dv;
+
+                }
+
+            }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(textBox3.Text)&& !string.IsNullOrEmpty(textBox2.Text))
+            {
+                ExportEx(dataGridView1, textBox3.Text, path);
+            } 
+            else
+            {
+                MessageBox.Show("Make sure you filled all requirements");
+            }
+        }
 
 
+
+
+
+
+
+        public void ExportEx(DataGridView gr, string xlname, string path)
+        {
+
+                Microsoft.Office.Interop.Excel.Application obj = new Microsoft.Office.Interop.Excel.Application();
+                obj.Application.Workbooks.Add(Type.Missing);
+                obj.Columns.ColumnWidth = 25;
+                for (int i = 1; i < gr.Columns.Count + 1; i++)
+                {
+                    obj.Cells[1, i] = gr.Columns[i - 1].HeaderText;
+                }
+                for (int i = 0; i < gr.Rows.Count-1; i++)
+                {
+                    for (int j = 0; j < gr.Columns.Count; j++)
+                    {
+                        obj.Cells[i + 2, j + 1] = gr.Rows[i].Cells[j].Value.ToString();
+                    }
+                }
+
+                string xlxname = xlname;
+                obj.ActiveWorkbook.SaveCopyAs(path + xlxname + ".xlsx");
+                MessageBox.Show("Done :) ! ");
+            
+
+        }
+
+        public void ExportEx2(DataGridView gr, string xlname, string path)
+        {
+
+            Microsoft.Office.Interop.Excel.Application obj = new Microsoft.Office.Interop.Excel.Application();
+            obj.Application.Workbooks.Add(Type.Missing);
+            obj.Columns.ColumnWidth = 25;
+            for (int i = 1; i < gr.Columns.Count + 1; i++)
+            {
+                obj.Cells[1, i] = gr.Columns[i - 1].HeaderText;
+            }
+            for (int i = 0; i < gr.Rows.Count ; i++)
+            {
+                for (int j = 0; j < gr.Columns.Count; j++)
+                {
+                    obj.Cells[i + 2, j + 1] = gr.Rows[i].Cells[j].Value.ToString();
+                }
+            }
+
+            string xlxname = xlname;
+            obj.ActiveWorkbook.SaveCopyAs(path + xlxname + ".xlsx");
+            MessageBox.Show("Done :) ! ");
+
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {   if(dataGridView2.RowCount != 0) {
+                if (!string.IsNullOrEmpty(textBox4.Text) && !string.IsNullOrEmpty(textBox5.Text))
+                {
+                    ExportEx2(dataGridView2, textBox5.Text, path2);
+                }
+                else
+                {
+                    MessageBox.Show("Make sure you filled all requirements");
+                }
+            }
+            else
+            {
+                MessageBox.Show("No data filtered!");
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            {
+                FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
+                DialogResult result = folderBrowserDialog1.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+
+                    textBox4.Text = folderBrowserDialog1.SelectedPath;
+                    path2 = textBox4.Text + "\\";
+
+                }
+            }
+        }
     }
+
+
 }
