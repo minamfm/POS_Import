@@ -57,24 +57,16 @@ namespace Test1
         }
         public void update_items(List<item> items_update)
         {
-            int index = 0;
 
             items = items_update;
             listView1.SetObjects(items);
             listView1.AlwaysGroupBySortOrder = SortOrder.None;
-            try
-            {
                 sum = 0;
-                while (true)
+                for (int index =0; index < items.Count; index++)
                 {
                     sum += Convert.ToSingle(items[index].editable_price) * Convert.ToSingle(items[index].qty);
                     index++;
                 }
-            }
-            catch
-            {
-
-            }
             Amount.Text = sum.ToString();
         }
         private void button3_Click(object sender, EventArgs e)
