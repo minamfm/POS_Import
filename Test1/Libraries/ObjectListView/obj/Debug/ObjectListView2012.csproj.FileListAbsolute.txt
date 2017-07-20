@@ -16,3 +16,5 @@ C:\Users\Ramez\Documents\GitShit\New Repo\POS_Import\Test1\Libraries\ObjectListV
 C:\Users\Ramez\Documents\GitShit\New Repo\POS_Import\Test1\Libraries\ObjectListView\obj\Debug\ObjectListView2012.csproj.GenerateResource.Cache
 C:\Users\Ramez\Documents\GitShit\New Repo\POS_Import\Test1\Libraries\ObjectListView\obj\Debug\ObjectListView.dll
 C:\Users\Ramez\Documents\GitShit\New Repo\POS_Import\Test1\Libraries\ObjectListView\obj\Debug\ObjectListView.pdb
+C:\Users\Ramez\Documents\GitShit\New Repo\POS_Import\Test1\Libraries\ObjectListView\bin\Debug\itextsharp.dll
+C:\Users\Ramez\Documents\GitShit\New Repo\POS_Import\Test1\Libraries\ObjectListView\bin\Debug\itextsharp.xml

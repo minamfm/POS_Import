@@ -90,6 +90,12 @@ namespace Test1
             New_Transaction newit = new New_Transaction();
             newit.Show();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Buys newbuys = new Buys();
+            newbuys.Show();
+        }
     }
 }
 
