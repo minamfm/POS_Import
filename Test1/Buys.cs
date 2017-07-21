@@ -175,16 +175,20 @@ namespace Test1
             //Write the table
             PdfPTable table = new PdfPTable(dtblTable.Columns.Count);
             //Table header
-            var arialFontPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "ARIALUNI.TTF");
-            string fontLoc = @"c:\windows\fonts\arialuni.ttf"; 
-            BaseFont btnColumnHeader = BaseFont.CreateFont(fontLoc, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-           // BaseFont btnColumnHeader = BaseFont.CreateFont(arialFontPath,BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            var arialFontPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "tradbdo.TTF");
+            BaseFont bf = BaseFont.CreateFont(arialFontPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            Font f = new Font(bf, 12);
+            // string fontLoc = @"c:\windows\fonts\arialuni.ttf"; 
+            // BaseFont btnColumnHeader = BaseFont.CreateFont(fontLoc, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            BaseFont btnColumnHeader = BaseFont.CreateFont(arialFontPath,BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             Font fntColumnHeader = new Font(btnColumnHeader, 10, 1, BaseColor.WHITE);
             for (int i = 0; i < dtblTable.Columns.Count; i++)
             {
-                PdfPCell cell = new PdfPCell();
+                Phrase phrase = new Phrase(dtblTable.Columns[i].ColumnName.ToUpper(), f);
+                table.RunDirection = PdfWriter.RUN_DIRECTION_RTL;
+                PdfPCell cell = new PdfPCell(phrase);
+                cell.HorizontalAlignment = 1;
                 cell.BackgroundColor = BaseColor.GRAY;
-                cell.AddElement(new Chunk(dtblTable.Columns[i].ColumnName.ToUpper(), fntColumnHeader));
                 table.AddCell(cell);
             }
             //table Data
@@ -192,7 +196,10 @@ namespace Test1
             {
                 for (int j = 0; j < dtblTable.Columns.Count; j++)
                 {
-                    table.AddCell(dtblTable.Rows[i][j].ToString());
+                    Phrase phrase = new Phrase(dtblTable.Rows[i][j].ToString(), f);
+                    PdfPCell cell = new PdfPCell(phrase);
+                    cell.HorizontalAlignment = 1;
+                    table.AddCell(cell);
                 }
             }
 
@@ -227,12 +234,12 @@ namespace Test1
             if(dialogResult == DialogResult.Yes)
             {
                 List<item> chosenits = new List<item>();
-                
+
                 if (!string.IsNullOrEmpty(code1.Text))
                 {
                     item temp = new item();
                     temp.code = code1.Text;
-                    temp.name = name1.Text;
+                    temp.name =String.Format(name1.Text);
                     temp.supplier = supp1.Text;
                     temp.qty = qty1.Text;
                     temp.qtyunit = qtyunit1.Text;
@@ -286,7 +293,7 @@ namespace Test1
 
                 DataTable table = ConvertListToDataTable(chosenits);
 
-                ExportDataTableToPdf(table, "C://Users//Ramez//Desktop//Pdf//txt1.pdf", "Hiii");
+                ExportDataTableToPdf(table, "C://Users//minam//Desktop//pdf//txt1.pdf", "Hiii");
             }
 
         }
