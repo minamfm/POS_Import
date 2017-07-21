@@ -16,6 +16,7 @@ namespace Test1
 {
     public partial class Buys : Form
     {
+        string path;
         List<item> items = new List<item>();
         Test1.Utilities util = new Utilities();
         public Buys()
@@ -43,7 +44,11 @@ namespace Test1
             supp3.Enabled = false;
             supp4.Enabled = false;
             supp5.Enabled = false;
-
+            qty1.Enabled = false;
+            qty2.Enabled = false;
+            qty3.Enabled = false;
+            qty4.Enabled = false;
+            qty5.Enabled = false;
             AutoCompleteStringCollection codecollection = new AutoCompleteStringCollection();
             foreach (item it in items)
             {
@@ -86,7 +91,7 @@ namespace Test1
             name1.Text = it.name;
             supp1.Text = it.supplier;
             qty1.Text = it.qty;
-            qtyunit1.Text = it.qtyunit;
+            newqty1.Text = "0";
             price1.Text = it.price;
 
 
@@ -99,7 +104,7 @@ namespace Test1
             name2.Text = it.name;
             supp2.Text = it.supplier;
             qty2.Text = it.qty;
-            qtyunit2.Text = it.qtyunit;
+            newqty2.Text = "0";
             price2.Text = it.price;
 
         }
@@ -111,7 +116,7 @@ namespace Test1
             name3.Text = it.name;
             supp3.Text = it.supplier;
             qty3.Text = it.qty;
-            qtyunit3.Text = it.qtyunit;
+            newqty3.Text = "0";
             price3.Text = it.price;
         }
 
@@ -122,7 +127,7 @@ namespace Test1
             name4.Text = it.name;
             supp4.Text = it.supplier;
             qty4.Text = it.qty;
-            qtyunit4.Text = it.qtyunit;
+            newqty4.Text ="0";
             price4.Text = it.price;
         }
 
@@ -133,7 +138,7 @@ namespace Test1
             name5.Text = it.name;
             supp5.Text = it.supplier;
             qty5.Text = it.qty;
-            qtyunit5.Text = it.qtyunit;
+            newqty5.Text = "0";
             price5.Text = it.price;
         }
 
@@ -145,6 +150,8 @@ namespace Test1
             Document document = new Document();
             document.SetPageSize(iTextSharp.text.PageSize.A4);
             PdfWriter writer = PdfWriter.GetInstance(document, fs);
+            writer.RunDirection = iTextSharp.text.pdf.PdfWriter.RUN_DIRECTION_RTL;
+
             document.Open();
 
             //Report Header
@@ -155,14 +162,20 @@ namespace Test1
             prgHeading.Alignment = Element.ALIGN_CENTER;
             prgHeading.Add(new Chunk(strHeader.ToUpper(), fntHead));
             document.Add(prgHeading);
-
+            
             //Author
+            
             Paragraph prgAuthor = new Paragraph();
-            BaseFont btnAuthor = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-            Font fntAuthor = new Font(btnAuthor, 8, 2);
+         
+            var arialFontPath1 = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "trado.TTF");
+            BaseFont authorf = BaseFont.CreateFont(arialFontPath1, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            Font f1 = new Font(authorf, 18);
             prgAuthor.Alignment = Element.ALIGN_RIGHT;
-            prgAuthor.Add(new Chunk("XXXXX", fntAuthor));
-            prgAuthor.Add(new Chunk("\nRun Date : " + DateTime.Now.ToShortDateString(), fntAuthor));
+            prgAuthor.;
+            prgAuthor.Font = f1;
+            
+            prgAuthor.Add(new Chunk("شركة فاديكو", f1));
+            prgAuthor.Add(new Chunk("\nDate : " + datetext.Text, f1));
             document.Add(prgAuthor);
 
             //Add a line seperation
@@ -178,8 +191,7 @@ namespace Test1
             var arialFontPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "tradbdo.TTF");
             BaseFont bf = BaseFont.CreateFont(arialFontPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             Font f = new Font(bf, 12);
-            // string fontLoc = @"c:\windows\fonts\arialuni.ttf"; 
-            // BaseFont btnColumnHeader = BaseFont.CreateFont(fontLoc, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+
             BaseFont btnColumnHeader = BaseFont.CreateFont(arialFontPath,BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             Font fntColumnHeader = new Font(btnColumnHeader, 10, 1, BaseColor.WHITE);
             for (int i = 0; i < dtblTable.Columns.Count; i++)
@@ -214,15 +226,14 @@ namespace Test1
         DataTable ConvertListToDataTable(List<item> list)
         {
             DataTable table = new DataTable();
-            table.Columns.Add();
-            table.Columns.Add();
-            table.Columns.Add();
-            table.Columns.Add();
-            table.Columns.Add();
+            table.Columns.Add("كود");
+            table.Columns.Add("اسم الصنف");
+            table.Columns.Add("الشركة");
+            table.Columns.Add("الكمية");
 
             foreach (item it in list)
             {
-                table.Rows.Add(it.code, it.name, it.supplier, it.qty, it.qtyunit);
+                table.Rows.Add(it.code, it.name, it.supplier, it.qty);
             }
 
             return table;
@@ -234,68 +245,137 @@ namespace Test1
             if(dialogResult == DialogResult.Yes)
             {
                 List<item> chosenits = new List<item>();
+                if (!string.IsNullOrEmpty(textBox1.Text) && !string.IsNullOrEmpty(textBox2.Text))
+                {
 
-                if (!string.IsNullOrEmpty(code1.Text))
+                    if (!string.IsNullOrEmpty(code1.Text)&& !string.IsNullOrEmpty(name1.Text))
                 {
                     item temp = new item();
                     temp.code = code1.Text;
-                    temp.name =String.Format(name1.Text);
+                    temp.name =name1.Text;
                     temp.supplier = supp1.Text;
-                    temp.qty = qty1.Text;
-                    temp.qtyunit = qtyunit1.Text;
+                    temp.qty = newqty1.Text;
 
-                    chosenits.Add(temp);       
+                    chosenits.Add(temp);
+
+                    int big_list_index = items.FindIndex(it => it.code == temp.code);
+                    item temp_item = items[big_list_index];
+                    temp_item.qty =Convert.ToString(Convert.ToInt32(temp_item.qty) + Convert.ToInt32(newqty1.Text));
+                    items[big_list_index] = temp_item;
+
+                       
                 }
-                if (!string.IsNullOrEmpty(code2.Text))
+                if (!string.IsNullOrEmpty(code2.Text) && !string.IsNullOrEmpty(name2.Text))
                 {
                     item temp = new item();
                     temp.code = code2.Text;
                     temp.name = name2.Text;
                     temp.supplier = supp2.Text;
-                    temp.qty = qty2.Text;
-                    temp.qtyunit = qtyunit2.Text;
+                    temp.qty = newqty2.Text;
+                   
 
                     chosenits.Add(temp);
+                    int big_list_index = items.FindIndex(it => it.code == temp.code);
+                    item temp_item = items[big_list_index];
+                    temp_item.qty = Convert.ToString(Convert.ToInt32(temp_item.qty) + Convert.ToInt32(newqty2.Text));
+                    items[big_list_index] = temp_item;
                 }
-                if (!string.IsNullOrEmpty(code3.Text))
+                if (!string.IsNullOrEmpty(code3.Text) && !string.IsNullOrEmpty(name3.Text))
                 {
                     item temp = new item();
                     temp.code = code3.Text;
                     temp.name = name3.Text;
                     temp.supplier = supp3.Text;
-                    temp.qty = qty3.Text;
-                    temp.qtyunit = qtyunit3.Text;
+                    temp.qty = newqty3.Text;
 
                     chosenits.Add(temp);
+                    int big_list_index = items.FindIndex(it => it.code == temp.code);
+                    item temp_item = items[big_list_index];
+                    temp_item.qty = Convert.ToString(Convert.ToInt32(temp_item.qty) + Convert.ToInt32(newqty3.Text));
+                    items[big_list_index] = temp_item;
                 }
-                if (!string.IsNullOrEmpty(code4.Text))
+                if (!string.IsNullOrEmpty(code4.Text) && !string.IsNullOrEmpty(name4.Text))
                 {
                     item temp = new item();
                     temp.code = code4.Text;
                     temp.name = name4.Text;
                     temp.supplier = supp4.Text;
-                    temp.qty = qty4.Text;
-                    temp.qtyunit = qtyunit4.Text;
+                    temp.qty = newqty4.Text;
 
                     chosenits.Add(temp);
+                    int big_list_index = items.FindIndex(it => it.code == temp.code);
+                    item temp_item = items[big_list_index];
+                    temp_item.qty = Convert.ToString(Convert.ToInt32(temp_item.qty) + Convert.ToInt32(newqty4.Text));
+                    items[big_list_index] = temp_item;
                 }
-                if (!string.IsNullOrEmpty(code5.Text))
+                if (!string.IsNullOrEmpty(code5.Text) && !string.IsNullOrEmpty(name4.Text))
                 {
                     item temp = new item();
                     temp.code = code5.Text;
                     temp.name = name5.Text;
                     temp.supplier = supp5.Text;
-                    temp.qty = qty5.Text;
-                    temp.qtyunit = qtyunit5.Text;
+                    temp.qty = newqty5.Text;
 
                     chosenits.Add(temp);
+                    int big_list_index = items.FindIndex(it => it.code == temp.code);
+                    item temp_item = items[big_list_index];
+                    temp_item.qty = Convert.ToString(Convert.ToInt32(temp_item.qty) + Convert.ToInt32(newqty5.Text));
+                    items[big_list_index] = temp_item;
                 }
+                bool m = false;
+                    try
 
-                DataTable table = ConvertListToDataTable(chosenits);
+                {
 
-                ExportDataTableToPdf(table, "C://Users//minam//Desktop//pdf//txt1.pdf", "Hiii");
+                     m = util.InsertItems(items);
+                    if (m == true)
+                    {
+                        MessageBox.Show("Yes");
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("A7A");
+                  
+                }
+                if (m == true)
+                {
+                    DataTable table = ConvertListToDataTable(chosenits);
+                   
+                        path = path + textBox2.Text + ".pdf";
+                        ExportDataTableToPdf(table, path, "بيان مشتروات");
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("please insert a path and a name");
+                }
             }
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+                FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
+                DialogResult result = folderBrowserDialog1.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+
+                    textBox1.Text = folderBrowserDialog1.SelectedPath;
+                    textBox1.Enabled = false;
+                    path = textBox1.Text + "//" ;
+
+                }
+            
+        }
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            datetext.Text = monthCalendar1.SelectionRange.Start.ToString("dd/MM/yyyy");
+        }
+
+  
     }
 }

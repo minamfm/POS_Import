@@ -37,17 +37,17 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.qty1 = new System.Windows.Forms.TextBox();
-            this.qtyunit1 = new System.Windows.Forms.TextBox();
+            this.newqty1 = new System.Windows.Forms.TextBox();
             this.code4 = new System.Windows.Forms.ComboBox();
             this.code5 = new System.Windows.Forms.ComboBox();
             this.qty2 = new System.Windows.Forms.TextBox();
             this.qty3 = new System.Windows.Forms.TextBox();
             this.qty4 = new System.Windows.Forms.TextBox();
             this.qty5 = new System.Windows.Forms.TextBox();
-            this.qtyunit2 = new System.Windows.Forms.TextBox();
-            this.qtyunit3 = new System.Windows.Forms.TextBox();
-            this.qtyunit4 = new System.Windows.Forms.TextBox();
-            this.qtyunit5 = new System.Windows.Forms.TextBox();
+            this.newqty2 = new System.Windows.Forms.TextBox();
+            this.newqty3 = new System.Windows.Forms.TextBox();
+            this.newqty4 = new System.Windows.Forms.TextBox();
+            this.newqty5 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -71,6 +71,8 @@
             this.supp3 = new System.Windows.Forms.TextBox();
             this.supp4 = new System.Windows.Forms.TextBox();
             this.supp5 = new System.Windows.Forms.TextBox();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.datetext = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // code1
@@ -152,12 +154,12 @@
             this.qty1.Size = new System.Drawing.Size(51, 20);
             this.qty1.TabIndex = 11;
             // 
-            // qtyunit1
+            // newqty1
             // 
-            this.qtyunit1.Location = new System.Drawing.Point(659, 69);
-            this.qtyunit1.Name = "qtyunit1";
-            this.qtyunit1.Size = new System.Drawing.Size(51, 20);
-            this.qtyunit1.TabIndex = 12;
+            this.newqty1.Location = new System.Drawing.Point(659, 69);
+            this.newqty1.Name = "newqty1";
+            this.newqty1.Size = new System.Drawing.Size(51, 20);
+            this.newqty1.TabIndex = 12;
             // 
             // code4
             // 
@@ -205,93 +207,100 @@
             this.qty5.Size = new System.Drawing.Size(51, 20);
             this.qty5.TabIndex = 29;
             // 
-            // qtyunit2
+            // newqty2
             // 
-            this.qtyunit2.Location = new System.Drawing.Point(659, 111);
-            this.qtyunit2.Name = "qtyunit2";
-            this.qtyunit2.Size = new System.Drawing.Size(51, 20);
-            this.qtyunit2.TabIndex = 30;
+            this.newqty2.Location = new System.Drawing.Point(659, 111);
+            this.newqty2.Name = "newqty2";
+            this.newqty2.Size = new System.Drawing.Size(51, 20);
+            this.newqty2.TabIndex = 30;
             // 
-            // qtyunit3
+            // newqty3
             // 
-            this.qtyunit3.Location = new System.Drawing.Point(659, 151);
-            this.qtyunit3.Name = "qtyunit3";
-            this.qtyunit3.Size = new System.Drawing.Size(51, 20);
-            this.qtyunit3.TabIndex = 31;
+            this.newqty3.Location = new System.Drawing.Point(659, 151);
+            this.newqty3.Name = "newqty3";
+            this.newqty3.Size = new System.Drawing.Size(51, 20);
+            this.newqty3.TabIndex = 31;
             // 
-            // qtyunit4
+            // newqty4
             // 
-            this.qtyunit4.Location = new System.Drawing.Point(659, 191);
-            this.qtyunit4.Name = "qtyunit4";
-            this.qtyunit4.Size = new System.Drawing.Size(51, 20);
-            this.qtyunit4.TabIndex = 32;
+            this.newqty4.Location = new System.Drawing.Point(659, 191);
+            this.newqty4.Name = "newqty4";
+            this.newqty4.Size = new System.Drawing.Size(51, 20);
+            this.newqty4.TabIndex = 32;
             // 
-            // qtyunit5
+            // newqty5
             // 
-            this.qtyunit5.Location = new System.Drawing.Point(659, 237);
-            this.qtyunit5.Name = "qtyunit5";
-            this.qtyunit5.Size = new System.Drawing.Size(51, 20);
-            this.qtyunit5.TabIndex = 33;
+            this.newqty5.Location = new System.Drawing.Point(659, 237);
+            this.newqty5.Name = "newqty5";
+            this.newqty5.Size = new System.Drawing.Size(51, 20);
+            this.newqty5.TabIndex = 33;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(296, 332);
+            this.textBox1.Location = new System.Drawing.Point(68, 366);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(388, 20);
             this.textBox1.TabIndex = 38;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(296, 361);
+            this.textBox2.Location = new System.Drawing.Point(68, 392);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(388, 20);
             this.textBox2.TabIndex = 39;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(245, 343);
+            this.button1.Location = new System.Drawing.Point(12, 379);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(45, 23);
             this.button1.TabIndex = 40;
             this.button1.Text = "....";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.Lime;
             this.button2.Location = new System.Drawing.Point(12, 430);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(154, 48);
             this.button2.TabIndex = 41;
             this.button2.Text = "Save Print and Exit";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(188, 430);
+            this.button3.BackColor = System.Drawing.Color.Red;
+            this.button3.Location = new System.Drawing.Point(196, 430);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(150, 48);
             this.button3.TabIndex = 42;
             this.button3.Text = "Preview";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(566, 430);
+            this.button4.BackColor = System.Drawing.Color.Maroon;
+            this.button4.Location = new System.Drawing.Point(479, 430);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(118, 48);
+            this.button4.Size = new System.Drawing.Size(142, 48);
             this.button4.TabIndex = 43;
             this.button4.Text = "Exit";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.UseVisualStyleBackColor = false;
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(12, 289);
+            this.button5.BackColor = System.Drawing.Color.Aqua;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button5.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button5.Location = new System.Drawing.Point(479, 309);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(142, 48);
+            this.button5.Size = new System.Drawing.Size(142, 103);
             this.button5.TabIndex = 44;
             this.button5.Text = "New Item ";
-            this.button5.UseVisualStyleBackColor = true;
+            this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label6
@@ -435,11 +444,29 @@
             this.supp5.Size = new System.Drawing.Size(129, 22);
             this.supp5.TabIndex = 54;
             // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(624, 283);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 55;
+            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
+            // 
+            // datetext
+            // 
+            this.datetext.Enabled = false;
+            this.datetext.Font = new System.Drawing.Font("Swis721 BlkEx BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.datetext.Location = new System.Drawing.Point(627, 458);
+            this.datetext.Name = "datetext";
+            this.datetext.Size = new System.Drawing.Size(196, 21);
+            this.datetext.TabIndex = 56;
+            // 
             // Buys
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(841, 490);
+            this.ClientSize = new System.Drawing.Size(830, 490);
+            this.Controls.Add(this.datetext);
+            this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.supp5);
             this.Controls.Add(this.supp4);
             this.Controls.Add(this.supp3);
@@ -461,10 +488,10 @@
             this.Controls.Add(this.price4);
             this.Controls.Add(this.price3);
             this.Controls.Add(this.price2);
-            this.Controls.Add(this.qtyunit5);
-            this.Controls.Add(this.qtyunit4);
-            this.Controls.Add(this.qtyunit3);
-            this.Controls.Add(this.qtyunit2);
+            this.Controls.Add(this.newqty5);
+            this.Controls.Add(this.newqty4);
+            this.Controls.Add(this.newqty3);
+            this.Controls.Add(this.newqty2);
             this.Controls.Add(this.qty5);
             this.Controls.Add(this.qty4);
             this.Controls.Add(this.qty3);
@@ -472,7 +499,7 @@
             this.Controls.Add(this.code5);
             this.Controls.Add(this.code4);
             this.Controls.Add(this.price1);
-            this.Controls.Add(this.qtyunit1);
+            this.Controls.Add(this.newqty1);
             this.Controls.Add(this.qty1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -502,17 +529,17 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox qty1;
-        private System.Windows.Forms.TextBox qtyunit1;
+        private System.Windows.Forms.TextBox newqty1;
         private System.Windows.Forms.ComboBox code4;
         private System.Windows.Forms.ComboBox code5;
         private System.Windows.Forms.TextBox qty2;
         private System.Windows.Forms.TextBox qty3;
         private System.Windows.Forms.TextBox qty4;
         private System.Windows.Forms.TextBox qty5;
-        private System.Windows.Forms.TextBox qtyunit2;
-        private System.Windows.Forms.TextBox qtyunit3;
-        private System.Windows.Forms.TextBox qtyunit4;
-        private System.Windows.Forms.TextBox qtyunit5;
+        private System.Windows.Forms.TextBox newqty2;
+        private System.Windows.Forms.TextBox newqty3;
+        private System.Windows.Forms.TextBox newqty4;
+        private System.Windows.Forms.TextBox newqty5;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button1;
@@ -536,5 +563,7 @@
         private System.Windows.Forms.TextBox supp3;
         private System.Windows.Forms.TextBox supp4;
         private System.Windows.Forms.TextBox supp5;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.TextBox datetext;
     }
 }

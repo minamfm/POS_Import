@@ -215,18 +215,20 @@ namespace Test1
             {
                 foreach (item it in x)
                 {
-                    SqlCommand cmd = new SqlCommand("Update Item SET Code=@code , name=@name, supplier=@supp , type=@type , qty=@qty, qtyunit=@qtyunit , price=@price Where Code=@code", conn);
+                    SqlCommand cmd = new SqlCommand("Update Item SET Code= @code , name= @name, supplier= @supp , type= @type , qty= @qty, qtyunit= @qtyunit , price= @price Where Code= @code", conn);
                     cmd.Parameters.AddWithValue("@code", it.code);
                     cmd.Parameters.AddWithValue("@name", it.name);
                     cmd.Parameters.AddWithValue("@supp", it.supplier);
                     cmd.Parameters.AddWithValue("@type", it.type);
                     cmd.Parameters.AddWithValue("@qty", Convert.ToInt32(it.qty));
                     cmd.Parameters.AddWithValue("@qtyunit", Convert.ToInt32(it.qtyunit));
-                    cmd.Parameters.AddWithValue("@price", Convert.ToInt32(it.price));
+                    cmd.Parameters.AddWithValue("@price", Convert.ToSingle(it.price));
+                    cmd.ExecuteNonQuery();
 
 
                 }
                 state =true;
+                conn.Close();
             }
             catch
             {
