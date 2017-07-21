@@ -204,7 +204,27 @@ namespace Test1
             }
             return ret;
         }
-        public bool InsertRep(Rep rep) { return false; }
+        public bool InsertRep(Rep rep)
+        {
+            bool ret = false;
+            SqlConnection conn = new SqlConnection(GetConnectionString());
+
+            string command = "insert into Represent (repname,numclient,clientids,totalsell) values ('"
+                 +  rep.repname + "','0','0','" + rep.totalsell + "')";
+
+            SqlCommand cmd = new SqlCommand(command, conn);
+            try
+            {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                ret = true;
+            }
+            catch
+            {
+                ret = false;
+            }
+            return ret;
+        }
 
         public bool InsertItems( List<item> x)
         {

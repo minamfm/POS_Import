@@ -44,6 +44,8 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.idbox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -52,11 +54,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.textBox11 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.idbox = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -64,7 +62,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(984, 909);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(169, 82);
             this.button1.TabIndex = 0;
@@ -74,7 +72,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(551, 909);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(169, 82);
             this.button2.TabIndex = 1;
@@ -86,7 +84,7 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Location = new System.Drawing.Point(741, 90);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(102, 35);
             this.radioButton1.TabIndex = 2;
@@ -99,7 +97,7 @@
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(928, 90);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButton2.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(92, 35);
             this.radioButton2.TabIndex = 3;
@@ -111,7 +109,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(928, 218);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(270, 37);
             this.textBox1.TabIndex = 4;
@@ -139,7 +137,7 @@
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(71, 93);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(270, 37);
             this.textBox2.TabIndex = 7;
@@ -147,7 +145,7 @@
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(71, 168);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(270, 37);
             this.textBox3.TabIndex = 9;
@@ -165,7 +163,7 @@
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(71, 246);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(270, 37);
             this.textBox4.TabIndex = 11;
@@ -193,7 +191,7 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(278, 321);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(134, 46);
             this.button3.TabIndex = 13;
@@ -232,15 +230,33 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Location = new System.Drawing.Point(852, 278);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(678, 614);
             this.panel1.TabIndex = 15;
             // 
+            // idbox
+            // 
+            this.idbox.Location = new System.Drawing.Point(71, 29);
+            this.idbox.Margin = new System.Windows.Forms.Padding(4);
+            this.idbox.Name = "idbox";
+            this.idbox.Size = new System.Drawing.Size(275, 37);
+            this.idbox.TabIndex = 22;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(434, 32);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(122, 31);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "رقم التعريف";
+            // 
             // textBox5
             // 
             this.textBox5.Location = new System.Drawing.Point(71, 400);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(4);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(270, 37);
             this.textBox5.TabIndex = 16;
@@ -258,7 +274,7 @@
             // textBox6
             // 
             this.textBox6.Location = new System.Drawing.Point(71, 553);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(4);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(270, 37);
             this.textBox6.TabIndex = 20;
@@ -266,7 +282,7 @@
             // textBox7
             // 
             this.textBox7.Location = new System.Drawing.Point(71, 475);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(4);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(270, 37);
             this.textBox7.TabIndex = 18;
@@ -294,10 +310,8 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.textBox11);
-            this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.label15);
-            this.panel2.Controls.Add(this.label17);
-            this.panel2.Location = new System.Drawing.Point(188, 469);
+            this.panel2.Location = new System.Drawing.Point(840, 307);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(924, 261);
@@ -311,16 +325,6 @@
             this.textBox11.Size = new System.Drawing.Size(270, 37);
             this.textBox11.TabIndex = 7;
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(438, 173);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(76, 31);
-            this.label13.TabIndex = 10;
-            this.label13.Text = "مديونية";
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -330,34 +334,6 @@
             this.label15.Size = new System.Drawing.Size(75, 31);
             this.label15.TabIndex = 6;
             this.label15.Text = "مبيعات";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(438, 95);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(59, 31);
-            this.label17.TabIndex = 8;
-            this.label17.Text = "مسدد";
-            // 
-            // idbox
-            // 
-            this.idbox.Location = new System.Drawing.Point(71, 29);
-            this.idbox.Margin = new System.Windows.Forms.Padding(4);
-            this.idbox.Name = "idbox";
-            this.idbox.Size = new System.Drawing.Size(275, 37);
-            this.idbox.TabIndex = 22;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(434, 32);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(122, 31);
-            this.label10.TabIndex = 21;
-            this.label10.Text = "رقم التعريف";
             // 
             // NewCustomerorRep
             // 
@@ -372,7 +348,7 @@
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "NewCustomerorRep";
             this.Text = "NewCustomerorRep";
             this.Load += new System.EventHandler(this.NewCustomerorRep_Load);
@@ -411,9 +387,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox idbox;
         private System.Windows.Forms.Label label10;
     }

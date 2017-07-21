@@ -74,6 +74,12 @@ namespace Test1
             else if(mode == modes.rep)
             {
                 Rep rep = new Rep(0, textBox1.Text, 0, "", Convert.ToSingle(textBox11.Text));
+                Utilities utils = new Utilities();
+                bool ret = utils.InsertRep(rep);
+                if (!ret)
+                {
+                    MessageBox.Show("Error!");
+                }
             }
         }
 
