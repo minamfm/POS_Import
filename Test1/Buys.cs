@@ -139,7 +139,9 @@ namespace Test1
 
         void ExportDataTableToPdf(DataTable dtblTable, String strPdfPath, string strHeader)
         {
+            
             System.IO.FileStream fs = new FileStream(strPdfPath, FileMode.Create, FileAccess.Write, FileShare.None);
+
             Document document = new Document();
             document.SetPageSize(iTextSharp.text.PageSize.A4);
             PdfWriter writer = PdfWriter.GetInstance(document, fs);
@@ -173,7 +175,10 @@ namespace Test1
             //Write the table
             PdfPTable table = new PdfPTable(dtblTable.Columns.Count);
             //Table header
-            BaseFont btnColumnHeader = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+            var arialFontPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "ARIALUNI.TTF");
+            string fontLoc = @"c:\windows\fonts\arialuni.ttf"; 
+            BaseFont btnColumnHeader = BaseFont.CreateFont(fontLoc, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+           // BaseFont btnColumnHeader = BaseFont.CreateFont(arialFontPath,BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             Font fntColumnHeader = new Font(btnColumnHeader, 10, 1, BaseColor.WHITE);
             for (int i = 0; i < dtblTable.Columns.Count; i++)
             {
@@ -197,17 +202,93 @@ namespace Test1
             fs.Close();
         }
 
-    
 
-        private void  tablecreator()
+
+        DataTable ConvertListToDataTable(List<item> list)
         {
-            DataTable dt = new DataTable();
+            DataTable table = new DataTable();
+            table.Columns.Add();
+            table.Columns.Add();
+            table.Columns.Add();
+            table.Columns.Add();
+            table.Columns.Add();
 
+            foreach (item it in list)
+            {
+                table.Rows.Add(it.code, it.name, it.supplier, it.qty, it.qtyunit);
+            }
+
+            return table;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-           
+            DialogResult dialogResult = MessageBox.Show("Are you sure want to update", "Check ? ", MessageBoxButtons.YesNo);
+            if(dialogResult == DialogResult.Yes)
+            {
+                List<item> chosenits = new List<item>();
+                
+                if (!string.IsNullOrEmpty(code1.Text))
+                {
+                    item temp = new item();
+                    temp.code = code1.Text;
+                    temp.name = name1.Text;
+                    temp.supplier = supp1.Text;
+                    temp.qty = qty1.Text;
+                    temp.qtyunit = qtyunit1.Text;
+
+                    chosenits.Add(temp);       
+                }
+                if (!string.IsNullOrEmpty(code2.Text))
+                {
+                    item temp = new item();
+                    temp.code = code2.Text;
+                    temp.name = name2.Text;
+                    temp.supplier = supp2.Text;
+                    temp.qty = qty2.Text;
+                    temp.qtyunit = qtyunit2.Text;
+
+                    chosenits.Add(temp);
+                }
+                if (!string.IsNullOrEmpty(code3.Text))
+                {
+                    item temp = new item();
+                    temp.code = code3.Text;
+                    temp.name = name3.Text;
+                    temp.supplier = supp3.Text;
+                    temp.qty = qty3.Text;
+                    temp.qtyunit = qtyunit3.Text;
+
+                    chosenits.Add(temp);
+                }
+                if (!string.IsNullOrEmpty(code4.Text))
+                {
+                    item temp = new item();
+                    temp.code = code4.Text;
+                    temp.name = name4.Text;
+                    temp.supplier = supp4.Text;
+                    temp.qty = qty4.Text;
+                    temp.qtyunit = qtyunit4.Text;
+
+                    chosenits.Add(temp);
+                }
+                if (!string.IsNullOrEmpty(code5.Text))
+                {
+                    item temp = new item();
+                    temp.code = code5.Text;
+                    temp.name = name5.Text;
+                    temp.supplier = supp5.Text;
+                    temp.qty = qty5.Text;
+                    temp.qtyunit = qtyunit5.Text;
+
+                    chosenits.Add(temp);
+                }
+
+                DataTable table = ConvertListToDataTable(chosenits);
+
+                ExportDataTableToPdf(table, "C://Users//Ramez//Desktop//Pdf//txt1.pdf", "Hiii");
+            }
+
         }
     }
 }
