@@ -266,7 +266,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(154, 48);
             this.button2.TabIndex = 41;
-            this.button2.Text = "Save Print and Exit";
+            this.button2.Text = "Previous Buys";
             this.button2.UseVisualStyleBackColor = false;
             // 
             // button3
@@ -276,7 +276,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(150, 48);
             this.button3.TabIndex = 42;
-            this.button3.Text = "Preview";
+            this.button3.Text = "Save Export & EXIT";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -289,6 +289,7 @@
             this.button4.TabIndex = 43;
             this.button4.Text = "Exit";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 

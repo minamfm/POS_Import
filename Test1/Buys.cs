@@ -6,11 +6,13 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Sql;
 using System.Windows.Forms;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
 using iTextSharp;
 using System.IO;
+using System.Data.SqlClient;
 
 namespace Test1
 {
@@ -49,7 +51,9 @@ namespace Test1
             qty3.Enabled = false;
             qty4.Enabled = false;
             qty5.Enabled = false;
-            AutoCompleteStringCollection codecollection = new AutoCompleteStringCollection();
+            datetext.Text = monthCalendar1.TodayDate.ToString("dd/MM/yyyy");
+        
+        AutoCompleteStringCollection codecollection = new AutoCompleteStringCollection();
             foreach (item it in items)
             {
 
@@ -155,28 +159,42 @@ namespace Test1
             document.Open();
 
             //Report Header
-            
-            BaseFont bfntHead = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+            var arialFontPath2 = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "trado.TTF");
+
+            BaseFont bfntHead = BaseFont.CreateFont(arialFontPath2, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             Font fntHead = new Font(bfntHead, 16, 1);
             Paragraph prgHeading = new Paragraph();
+            PdfPTable Y = new PdfPTable(1);
+            Y.RunDirection = PdfWriter.RUN_DIRECTION_RTL;
+            PdfPCell c1 = new PdfPCell();
             prgHeading.Alignment = Element.ALIGN_CENTER;
             prgHeading.Add(new Chunk(strHeader.ToUpper(), fntHead));
-            document.Add(prgHeading);
-            
+            c1.AddElement(prgHeading);
+            c1.Border = Rectangle.NO_BORDER;
+
+            Y.AddCell(c1);
+            document.Add(Y);
+           
             //Author
-            
+
             Paragraph prgAuthor = new Paragraph();
-         
+            PdfPTable X = new PdfPTable(1);
+            X.RunDirection = PdfWriter.RUN_DIRECTION_RTL;
+            PdfPCell c = new PdfPCell();
+
             var arialFontPath1 = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "trado.TTF");
             BaseFont authorf = BaseFont.CreateFont(arialFontPath1, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             Font f1 = new Font(authorf, 18);
             prgAuthor.Alignment = Element.ALIGN_RIGHT;
-            prgAuthor.;
-            prgAuthor.Font = f1;
             
-            prgAuthor.Add(new Chunk("شركة فاديكو", f1));
+            prgAuthor.Font = f1;
+            prgAuthor.Add(new Chunk(" بيان مشتروات", f1));
             prgAuthor.Add(new Chunk("\nDate : " + datetext.Text, f1));
-            document.Add(prgAuthor);
+            c.AddElement(prgAuthor);
+            c.Border =Rectangle.NO_BORDER;
+            
+            X.AddCell(c);
+            document.Add(X);
 
             //Add a line seperation
             Paragraph p = new Paragraph(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0.0F, 100.0F,BaseColor.BLACK, Element.ALIGN_LEFT, 1)));
@@ -330,12 +348,12 @@ namespace Test1
                      m = util.InsertItems(items);
                     if (m == true)
                     {
-                        MessageBox.Show("Yes");
+                        MessageBox.Show("Done");
                     }
                 }
                 catch
                 {
-                    MessageBox.Show("A7A");
+                    MessageBox.Show("Error!");
                   
                 }
                 if (m == true)
@@ -343,7 +361,36 @@ namespace Test1
                     DataTable table = ConvertListToDataTable(chosenits);
                    
                         path = path + textBox2.Text + ".pdf";
-                        ExportDataTableToPdf(table, path, "بيان مشتروات");
+                        ExportDataTableToPdf(table, path, "شركة فادي كو");
+                        SqlConnection conn = new SqlConnection(util.GetConnectionString());
+                        string itx = null;
+                        foreach (item ii in chosenits)
+                        {
+                            itx = itx + ii.code;
+                            itx = itx + "++";
+                            itx = itx + ii.qty;
+                            itx = itx + "&&";
+                            
+                        }
+                        try
+                        {
+                            string query = "INSERT INTO Buys(date , items) VALUES (@date ,  @items)";
+
+                            SqlCommand cmd = new SqlCommand(query, conn);
+                            cmd.Parameters.AddWithValue("@date", datetext.Text);
+                            cmd.Parameters.AddWithValue("@items", itx);
+
+
+                            conn.Open();
+                        
+                            cmd.ExecuteNonQuery();
+                            conn.Close();
+                            this.Close();
+                        }
+                        catch
+                        {
+                            MessageBox.Show("failed");
+                        }
                     }
 
                 }
@@ -376,6 +423,9 @@ namespace Test1
             datetext.Text = monthCalendar1.SelectionRange.Start.ToString("dd/MM/yyyy");
         }
 
-  
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
