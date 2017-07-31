@@ -32,21 +32,20 @@
             this.button2 = new System.Windows.Forms.Button();
             this.dataListView1 = new BrightIdeasSoftware.DataListView();
             this.olvColumn1 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumn6 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn2 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn3 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn4 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn5 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.olvColumn6 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataListView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(24, 23);
-            this.button1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.button1.Location = new System.Drawing.Point(12, 12);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(334, 113);
+            this.button1.Size = new System.Drawing.Size(167, 59);
             this.button1.TabIndex = 0;
             this.button1.Text = "New";
             this.button1.UseVisualStyleBackColor = true;
@@ -54,10 +53,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(24, 840);
-            this.button2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.button2.Location = new System.Drawing.Point(12, 437);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(334, 113);
+            this.button2.Size = new System.Drawing.Size(167, 59);
             this.button2.TabIndex = 1;
             this.button2.Text = "Return";
             this.button2.UseVisualStyleBackColor = true;
@@ -81,9 +79,10 @@
             this.olvColumn5});
             this.dataListView1.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataListView1.DataSource = null;
-            this.dataListView1.Location = new System.Drawing.Point(423, 39);
+            this.dataListView1.Location = new System.Drawing.Point(212, 20);
+            this.dataListView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataListView1.Name = "dataListView1";
-            this.dataListView1.Size = new System.Drawing.Size(1387, 899);
+            this.dataListView1.Size = new System.Drawing.Size(696, 469);
             this.dataListView1.TabIndex = 2;
             this.dataListView1.UseCompatibleStateImageBehavior = false;
             this.dataListView1.View = System.Windows.Forms.View.Details;
@@ -92,6 +91,11 @@
             // 
             this.olvColumn1.AspectName = "date";
             this.olvColumn1.Text = "Date";
+            // 
+            // olvColumn6
+            // 
+            this.olvColumn6.AspectName = "code";
+            this.olvColumn6.Text = "Code";
             // 
             // olvColumn2
             // 
@@ -113,17 +117,11 @@
             this.olvColumn5.AspectName = "clientname";
             this.olvColumn5.Text = "Client Name";
             // 
-            // olvColumn6
-            // 
-            this.olvColumn6.AspectName = "code";
-            this.olvColumn6.Text = "Code";
-            // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(24, 414);
-            this.button3.Margin = new System.Windows.Forms.Padding(6);
+            this.button3.Location = new System.Drawing.Point(12, 215);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(334, 113);
+            this.button3.Size = new System.Drawing.Size(167, 59);
             this.button3.TabIndex = 3;
             this.button3.Text = "Modify";
             this.button3.UseVisualStyleBackColor = true;
@@ -131,14 +129,13 @@
             // 
             // Transactions
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1888, 1015);
+            this.ClientSize = new System.Drawing.Size(877, 508);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.dataListView1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "Transactions";
             this.Text = "Transactions";
             this.Load += new System.EventHandler(this.Transactions_Load);

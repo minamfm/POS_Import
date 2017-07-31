@@ -40,6 +40,11 @@ namespace Test1
             newuser.Show();
         }
 
+        private void T1_Load(object sender, EventArgs e)
+        {
+            textBox2.PasswordChar = '*';
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             Test1.Utilities util = new Test1.Utilities();

@@ -62,7 +62,9 @@ namespace Test1
 
         private void button2_Click(object sender, EventArgs e)
         {
+
             //conn = new SqlConnection(util.GetConnectionString());
+           
             string x1 = "";
             string x2 = "";
             string x3 = "";
@@ -70,16 +72,19 @@ namespace Test1
             string x5 = "";
             string x6 = "";
             string x7 = "";
-            //  x1 = AllTransactions[dataListView1.SelectedIndex];   // x
-            x1 = AllTransactions[dataListView1.SelectedIndex].code;
-            x2 = AllTransactions[dataListView1.SelectedIndex].date;   // date
-            x3 = AllTransactions[dataListView1.SelectedIndex].clientid.ToString();    // client id 
-            x4 = AllTransactions[dataListView1.SelectedIndex].totalamount.ToString();    // total
-            x5 = AllTransactions[dataListView1.SelectedIndex].items;   // items
-            x6 = AllTransactions[dataListView1.SelectedIndex].sellreturn.ToString();    //sellbuy
-            x7 = AllTransactions[dataListView1.SelectedIndex].clientname;    // client name
+            if (dataListView1.SelectedItem != null)
+            {
 
 
+                x1 = AllTransactions[dataListView1.SelectedIndex].code;
+                x2 = AllTransactions[dataListView1.SelectedIndex].date;   // date
+                x3 = AllTransactions[dataListView1.SelectedIndex].clientid.ToString();    // client id 
+                x4 = AllTransactions[dataListView1.SelectedIndex].totalamount.ToString();    // total
+                x5 = AllTransactions[dataListView1.SelectedIndex].items;   // items
+                x6 = AllTransactions[dataListView1.SelectedIndex].sellreturn.ToString();    //sellbuy
+                x7 = AllTransactions[dataListView1.SelectedIndex].clientname;    // client name
+
+            }
 
             if (!string.IsNullOrEmpty(x1) && !string.IsNullOrEmpty(x2) && !string.IsNullOrEmpty(x3)
                 && !string.IsNullOrEmpty(x4) && !string.IsNullOrEmpty(x5) && !string.IsNullOrEmpty(x6)

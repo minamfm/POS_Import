@@ -48,7 +48,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(274, 430);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(81, 34);
             this.button1.TabIndex = 1;
@@ -59,7 +59,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(412, 430);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(81, 34);
             this.button2.TabIndex = 2;
@@ -95,7 +95,7 @@
             this.listView1.DataSource = null;
             this.listView1.HasCollapsibleGroups = false;
             this.listView1.Location = new System.Drawing.Point(6, 57);
-            this.listView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listView1.Margin = new System.Windows.Forms.Padding(2);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(772, 363);
             this.listView1.TabIndex = 3;
@@ -161,7 +161,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(128, 18);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(194, 20);
             this.textBox1.TabIndex = 4;
@@ -171,12 +171,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(685, 392);
+            this.ClientSize = new System.Drawing.Size(792, 521);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "newitemcheckbox";
             this.Text = "newitemcheckbox";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.newitemcheckbox_FormClosing);
