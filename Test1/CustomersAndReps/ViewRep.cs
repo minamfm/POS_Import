@@ -25,6 +25,7 @@ namespace Test1
             Utilities utils = new Utilities();
             reps = utils.GetAllReps();
             dataListView1.SetObjects(reps);
+            sender_form.UpdateRep(reps.Find(r => r.repname == "NoRep"));
         }
 
         private void button2_Click(object sender, EventArgs e)

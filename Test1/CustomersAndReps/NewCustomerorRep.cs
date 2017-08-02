@@ -23,6 +23,9 @@ namespace Test1
         public NewCustomerorRep()
         {
             InitializeComponent();
+            ViewRep view = new ViewRep(this);
+            view.Show();
+            view.Close();
         }
         private void button3_Click(object sender, EventArgs e)
         {
