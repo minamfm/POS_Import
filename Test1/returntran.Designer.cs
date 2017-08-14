@@ -50,94 +50,107 @@
             this.qtyfinal = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.qtyufinal = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.supllierfinal = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.objectListView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(51, 38);
+            this.label1.Location = new System.Drawing.Point(102, 73);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.Size = new System.Drawing.Size(78, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "كود البيان";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(186, 38);
+            this.label2.Location = new System.Drawing.Point(372, 73);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 13);
+            this.label2.Size = new System.Drawing.Size(84, 25);
             this.label2.TabIndex = 1;
             this.label2.Text = "كود العميل";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(436, 38);
+            this.label3.Location = new System.Drawing.Point(872, 73);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.Size = new System.Drawing.Size(85, 25);
             this.label3.TabIndex = 2;
             this.label3.Text = "اسم العميل";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(688, 38);
+            this.label4.Location = new System.Drawing.Point(1376, 73);
+            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 13);
+            this.label4.Size = new System.Drawing.Size(110, 25);
             this.label4.TabIndex = 3;
             this.label4.Text = "مبيعات البيات ";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 73);
+            this.textBox1.Location = new System.Drawing.Point(24, 140);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(132, 20);
+            this.textBox1.Size = new System.Drawing.Size(260, 31);
             this.textBox1.TabIndex = 4;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(150, 73);
+            this.textBox2.Location = new System.Drawing.Point(300, 140);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(136, 20);
+            this.textBox2.Size = new System.Drawing.Size(268, 31);
             this.textBox2.TabIndex = 5;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(292, 73);
+            this.textBox3.Location = new System.Drawing.Point(584, 140);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(339, 20);
+            this.textBox3.Size = new System.Drawing.Size(674, 31);
             this.textBox3.TabIndex = 6;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(637, 73);
+            this.textBox4.Location = new System.Drawing.Point(1274, 140);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(165, 20);
+            this.textBox4.Size = new System.Drawing.Size(326, 31);
             this.textBox4.TabIndex = 7;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(857, 38);
+            this.label5.Location = new System.Drawing.Point(1714, 73);
+            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(38, 13);
+            this.label5.Size = new System.Drawing.Size(58, 25);
             this.label5.TabIndex = 8;
             this.label5.Text = "التاريخ";
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(808, 73);
+            this.textBox5.Location = new System.Drawing.Point(1616, 140);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(108, 20);
+            this.textBox5.Size = new System.Drawing.Size(212, 31);
             this.textBox5.TabIndex = 9;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 488);
+            this.button1.Location = new System.Drawing.Point(24, 938);
+            this.button1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(131, 45);
+            this.button1.Size = new System.Drawing.Size(262, 87);
             this.button1.TabIndex = 10;
             this.button1.Text = "بالكامل";
             this.button1.UseVisualStyleBackColor = true;
@@ -145,9 +158,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(637, 488);
+            this.button2.Location = new System.Drawing.Point(1274, 938);
+            this.button2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(131, 45);
+            this.button2.Size = new System.Drawing.Size(262, 87);
             this.button2.TabIndex = 11;
             this.button2.Text = "مرتجع بعض السلع";
             this.button2.UseVisualStyleBackColor = true;
@@ -155,17 +169,19 @@
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(749, 443);
+            this.textBox6.Location = new System.Drawing.Point(1498, 852);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(167, 20);
+            this.textBox6.Size = new System.Drawing.Size(330, 31);
             this.textBox6.TabIndex = 13;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(857, 417);
+            this.label6.Location = new System.Drawing.Point(1714, 802);
+            this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(57, 13);
+            this.label6.Size = new System.Drawing.Size(90, 25);
             this.label6.TabIndex = 14;
             this.label6.Text = "مبلغ مرتجع";
             // 
@@ -197,9 +213,10 @@
             this.qtyufinal,
             this.supllierfinal});
             this.objectListView1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.objectListView1.Location = new System.Drawing.Point(360, 175);
+            this.objectListView1.Location = new System.Drawing.Point(720, 337);
+            this.objectListView1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.objectListView1.Name = "objectListView1";
-            this.objectListView1.Size = new System.Drawing.Size(556, 217);
+            this.objectListView1.Size = new System.Drawing.Size(1108, 414);
             this.objectListView1.TabIndex = 15;
             this.objectListView1.UseCompatibleStateImageBehavior = false;
             this.objectListView1.View = System.Windows.Forms.View.Details;
@@ -209,11 +226,13 @@
             // codefinal
             // 
             this.codefinal.AspectName = "codefinal";
+            this.codefinal.IsEditable = false;
             this.codefinal.Text = "Code";
             // 
             // namefinal
             // 
             this.namefinal.AspectName = "namefinal";
+            this.namefinal.IsEditable = false;
             this.namefinal.Text = "Name";
             this.namefinal.Width = 190;
             // 
@@ -226,20 +245,42 @@
             // qtyufinal
             // 
             this.qtyufinal.AspectName = "qtyufinal";
+            this.qtyufinal.IsEditable = false;
             this.qtyufinal.Text = "Quantity unit";
             this.qtyufinal.Width = 76;
             // 
             // supllierfinal
             // 
             this.supllierfinal.AspectName = "supplierfinal";
+            this.supllierfinal.IsEditable = false;
             this.supllierfinal.Text = "Supplier";
             this.supllierfinal.Width = 252;
             // 
+            // textBox7
+            // 
+            this.textBox7.Enabled = false;
+            this.textBox7.Location = new System.Drawing.Point(73, 804);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(537, 31);
+            this.textBox7.TabIndex = 16;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(24, 802);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(43, 35);
+            this.button3.TabIndex = 17;
+            this.button3.Text = "...";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // returntran
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(951, 537);
+            this.ClientSize = new System.Drawing.Size(1902, 1033);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.textBox7);
             this.Controls.Add(this.objectListView1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox6);
@@ -255,6 +296,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "returntran";
             this.Text = "returntran";
             this.Load += new System.EventHandler(this.returntran_Load);
@@ -288,5 +330,7 @@
         private BrightIdeasSoftware.OLVColumn qtyfinal;
         private BrightIdeasSoftware.OLVColumn qtyufinal;
         private BrightIdeasSoftware.OLVColumn supllierfinal;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Button button3;
     }
 }

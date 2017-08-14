@@ -331,7 +331,7 @@ namespace Test1
             // prgAuthor.Alignment = Element.ALIGN_LEFT;
 
             End.Font = fm;
-            End.Add(new Chunk("سياسة الأرتجاع من 15 الي 30 يوم علماً ان تكون السلع و الصناف بالحالة الاساسية", fm));
+            End.Add(new Chunk("سياسة المرتجع  من 15 الي 30 يوم علماً ان تكون السلع و الاصناف بالحالة الاساسية", fm));
            
             c3.AddElement(End);
             c3.Border = Rectangle.NO_BORDER;
