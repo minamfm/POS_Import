@@ -50,5 +50,14 @@ namespace Test1
                 MessageBox.Show("رجاء ادخال كل المساحات الخالية");
             }
         }
+        private void bysitem_FormClosing(object sender, FormClosingEventArgs e)
+        {
+          
+                    buys.Show();
+                    this.Dispose();
+               
+           
+        }
+
     }
 }

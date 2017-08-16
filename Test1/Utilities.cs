@@ -167,6 +167,23 @@ namespace Test1
             }
             return ret;
         }
+        public void deltransaction(int cde , string date)
+        {
+            SqlConnection conn = new SqlConnection(GetConnectionString());
+            SqlCommand cmd = new SqlCommand("Delete From Transactions where x= @x AND date = @d ", conn);
+            try
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@x", cde);
+                cmd.Parameters.AddWithValue("@d", date);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+
+            }
+            catch
+            {
+            }
+        }
         public bool InsertClient(Client client, Rep responsible_rep)
         {
             bool ret = false;

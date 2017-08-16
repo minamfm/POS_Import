@@ -77,6 +77,18 @@
     <Compile Include="buysitem.Designer.cs">
       <DependentUpon>buysitem.cs</DependentUpon>
     </Compile>
+    <Compile Include="CNR\Cusnrep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CNR\Cusnrep.Designer.cs">
+      <DependentUpon>Cusnrep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CNR\newcr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CNR\newcr.Designer.cs">
+      <DependentUpon>newcr.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomersAndReps\CustomersAndRepresentatives.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,6 +175,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="buysitem.resx">
       <DependentUpon>buysitem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CNR\Cusnrep.resx">
+      <DependentUpon>Cusnrep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CNR\newcr.resx">
+      <DependentUpon>newcr.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomersAndReps\CustomersAndRepresentatives.resx">
       <DependentUpon>CustomersAndRepresentatives.cs</DependentUpon>

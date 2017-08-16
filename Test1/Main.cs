@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Test1.CNR;
 
 namespace Test1
 {
@@ -75,8 +76,10 @@ namespace Test1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            CustomersAndRepresentatives cust = new CustomersAndRepresentatives();
-            cust.Show();
+            Cusnrep css = new Cusnrep();
+            css.Show();
+            //CustomersAndRepresentatives cust = new CustomersAndRepresentatives();
+            // cust.Show();
         }
 
 
