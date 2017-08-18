@@ -502,6 +502,11 @@ namespace Test1
 
             }
         }
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            textBox5.Text = monthCalendar1.SelectionRange.Start.ToString("dd/MM/yyyy");
+        }
     }
 
 

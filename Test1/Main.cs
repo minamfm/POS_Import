@@ -78,20 +78,19 @@ namespace Test1
         {
             Cusnrep css = new Cusnrep();
             css.Show();
-            //CustomersAndRepresentatives cust = new CustomersAndRepresentatives();
-            // cust.Show();
+         
         }
 
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+            Environment.Exit(0);
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            New_Transaction newit = new New_Transaction();
-            newit.Show();
+            
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -52,6 +52,7 @@
             this.supllierfinal = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             ((System.ComponentModel.ISupportInitialize)(this.objectListView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,7 +99,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(24, 140);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(6);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(260, 31);
             this.textBox1.TabIndex = 4;
@@ -106,7 +107,7 @@
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(300, 140);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(6);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(268, 31);
             this.textBox2.TabIndex = 5;
@@ -114,7 +115,7 @@
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(584, 140);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(6);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(674, 31);
             this.textBox3.TabIndex = 6;
@@ -122,7 +123,7 @@
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(1274, 140);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(6);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(326, 31);
             this.textBox4.TabIndex = 7;
@@ -140,7 +141,7 @@
             // textBox5
             // 
             this.textBox5.Location = new System.Drawing.Point(1616, 140);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(6);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(212, 31);
             this.textBox5.TabIndex = 9;
@@ -148,7 +149,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(24, 938);
-            this.button1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.button1.Margin = new System.Windows.Forms.Padding(6);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(262, 87);
             this.button1.TabIndex = 10;
@@ -159,7 +160,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(1274, 938);
-            this.button2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.button2.Margin = new System.Windows.Forms.Padding(6);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(262, 87);
             this.button2.TabIndex = 11;
@@ -170,7 +171,7 @@
             // textBox6
             // 
             this.textBox6.Location = new System.Drawing.Point(1498, 852);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(6);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(330, 31);
             this.textBox6.TabIndex = 13;
@@ -213,10 +214,10 @@
             this.qtyufinal,
             this.supllierfinal});
             this.objectListView1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.objectListView1.Location = new System.Drawing.Point(720, 337);
-            this.objectListView1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.objectListView1.Location = new System.Drawing.Point(24, 275);
+            this.objectListView1.Margin = new System.Windows.Forms.Padding(6);
             this.objectListView1.Name = "objectListView1";
-            this.objectListView1.Size = new System.Drawing.Size(1108, 414);
+            this.objectListView1.Size = new System.Drawing.Size(1269, 414);
             this.objectListView1.TabIndex = 15;
             this.objectListView1.UseCompatibleStateImageBehavior = false;
             this.objectListView1.View = System.Windows.Forms.View.Details;
@@ -274,11 +275,19 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(1426, 275);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 18;
+            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
+            // 
             // returntran
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1902, 1033);
+            this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.objectListView1);
@@ -296,7 +305,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "returntran";
             this.Text = "returntran";
             this.Load += new System.EventHandler(this.returntran_Load);
@@ -332,5 +341,6 @@
         private BrightIdeasSoftware.OLVColumn supllierfinal;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
     }
 }

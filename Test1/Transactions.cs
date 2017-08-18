@@ -118,93 +118,95 @@ namespace Test1
             dataListView1.SetObjects(AllTransactions);
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            string x1, x2, x3, x4, x5, x6, x7;
+        //private void button3_Click(object sender, EventArgs e)
+        //{
+        //    string x1, x2, x3, x4, x5, x6, x7;
             
-            if (dataListView1.SelectedItem != null)
-            {
+        //    if (dataListView1.SelectedItem != null)
+        //    {
 
 
-                x1 = AllTransactions[dataListView1.SelectedIndex].code;
-                x2 = AllTransactions[dataListView1.SelectedIndex].date;   // date
-                x3 = AllTransactions[dataListView1.SelectedIndex].clientid.ToString();    // client id 
-                x4 = AllTransactions[dataListView1.SelectedIndex].totalamount.ToString();    // total
-                x5 = AllTransactions[dataListView1.SelectedIndex].items;   // items
-                x6 = AllTransactions[dataListView1.SelectedIndex].sellreturn.ToString();    //sellbuy
-                x7 = AllTransactions[dataListView1.SelectedIndex].clientname;    // client name
-                if (x6 == "0")
-                {
-                    string stuff = x5;
-                    string tempcde = null;
-                    string tempqty = null;
-                    while (stuff != "")
-                    {
+        //        x1 = AllTransactions[dataListView1.SelectedIndex].code;
+        //        x2 = AllTransactions[dataListView1.SelectedIndex].date;   // date
+        //        x3 = AllTransactions[dataListView1.SelectedIndex].clientid.ToString();    // client id 
+        //        x4 = AllTransactions[dataListView1.SelectedIndex].totalamount.ToString();    // total
+        //        x5 = AllTransactions[dataListView1.SelectedIndex].items;   // items
+        //        x6 = AllTransactions[dataListView1.SelectedIndex].sellreturn.ToString();    //sellbuy
+        //        x7 = AllTransactions[dataListView1.SelectedIndex].clientname;    // client name
+
+        //        if (x6 == "0")
+        //        {
+        //            string stuff = x5;
+        //            string tempcde = null;
+        //            string tempqty = null;
+        //            while (stuff != "")
+        //            {
 
 
-                        if (stuff.IndexOf("&&++") >= 0)
-                        {
+        //                if (stuff.IndexOf("&&++") >= 0)
+        //                {
 
-                            tempcde = stuff.Substring(0, stuff.IndexOf("&&++"));
-                            stuff = stuff.Substring(stuff.IndexOf("&&++") + 4);
+        //                    tempcde = stuff.Substring(0, stuff.IndexOf("&&++"));
+        //                    stuff = stuff.Substring(stuff.IndexOf("&&++") + 4);
 
-                            if (stuff.IndexOf("++&&") >= 0)
-                            {
-                                tempqty = stuff.Substring(0, stuff.IndexOf("++&&"));
-                                stuff = stuff.Substring(stuff.IndexOf("++&&") + 4);
+        //                    if (stuff.IndexOf("++&&") >= 0)
+        //                    {
+        //                        tempqty = stuff.Substring(0, stuff.IndexOf("++&&"));
+        //                        stuff = stuff.Substring(stuff.IndexOf("++&&") + 4);
 
-                            }
-                            SqlConnection conn = new SqlConnection(util.GetConnectionString());
-                            SqlCommand cmd = new SqlCommand("Update Item SET qty= @qty Where Code= @code", conn);
-                            SqlCommand cmd2 = new SqlCommand("Select qty From Item Where Code = @code", conn);
+        //                    }
+        //                    SqlConnection conn = new SqlConnection(util.GetConnectionString());
+        //                    SqlCommand cmd = new SqlCommand("Update Item SET qty= @qty Where Code= @code", conn);
+        //                    SqlCommand cmd2 = new SqlCommand("Select qty From Item Where Code = @code", conn);
+        //                    SqlCommand cmd3 = new SqlCommand("Select From Client Where clientid = '" + Convert.ToInt32(x1) + "' ",conn);
+        //                    SqlCommand cmd4 = new SqlCommand("Update Client SET totalsales = @ts , debit = @tdb Where clientid = @cid", conn);
+        //                    int qtyy = 0;
+        //                    try
+        //                    {
+        //                        cmd2.Parameters.AddWithValue("@code", tempcde);
+        //                        conn.Open();
+        //                        using (SqlDataReader rdr = cmd2.ExecuteReader())
+        //                        {
+        //                            if (rdr.Read())
+        //                            {
+        //                                 qtyy = rdr.GetInt32(0);
+        //                            }
+        //                            conn.Close();
+        //                            qtyy = qtyy + Convert.ToInt32(tempqty);
+        //                        }
 
-                            int qtyy = 0;
-                            try
-                            {
-                                cmd2.Parameters.AddWithValue("@code", tempcde);
-                                conn.Open();
-                                using (SqlDataReader rdr = cmd2.ExecuteReader())
-                                {
-                                    if (rdr.Read())
-                                    {
-                                         qtyy = rdr.GetInt32(0);
-                                    }
-                                    conn.Close();
-                                    qtyy = qtyy + Convert.ToInt32(tempqty);
-                                }
-
-                            }
-                            catch
-                            {
-                                MessageBox.Show("rdr failed");
-                            }
+        //                    }
+        //                    catch
+        //                    {
+        //                        MessageBox.Show("rdr failed");
+        //                    }
 
 
-                            try
-                            {
-                                conn.Open();
-                                cmd.Parameters.AddWithValue("@code", tempcde);
-                                cmd.Parameters.AddWithValue("@qty", Convert.ToInt32(qtyy));
-                                cmd.ExecuteNonQuery();
-                                conn.Close();
-                            }
-                            catch
-                            {
-                                MessageBox.Show("Failed to Update");
-                                return;
-                            }
+        //                    try
+        //                    {
+        //                        conn.Open();
+        //                        cmd.Parameters.AddWithValue("@code", tempcde);
+        //                        cmd.Parameters.AddWithValue("@qty", Convert.ToInt32(qtyy));
+        //                        cmd.ExecuteNonQuery();
+        //                        conn.Close();
+        //                    }
+        //                    catch
+        //                    {
+        //                        MessageBox.Show("Failed to Update");
+        //                        return;
+        //                    }
 
-                        }
+        //                }
 
-                    }
-                    util.deltransaction(Convert.ToInt32(x1), x2);
-                    this.Transactions_Load(sender, e);
-                }
+        //            }
+        //            util.deltransaction(Convert.ToInt32(x1), x2);
+        //            this.Transactions_Load(sender, e);
+        //        }
 
-            }
+        //    }
             
 
 
-        }
+        //}
     }
 }

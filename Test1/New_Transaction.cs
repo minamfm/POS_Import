@@ -82,6 +82,7 @@ namespace Test1
 
         private void New_Transaction_Load(object sender, EventArgs e)
         {
+           
             listView1.View = View.Details;
             listView1.GridLines = true;
             listView1.FullRowSelect = true;
@@ -344,8 +345,9 @@ namespace Test1
             fs.Close();
         }
 
-
-
-
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            textBox1.Text = monthCalendar1.SelectionRange.Start.ToString("dd/MM/yyyy"); 
+        }
     }
 }

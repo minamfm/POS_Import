@@ -168,13 +168,8 @@ namespace Test1
                     adap.Update(dt);
 
                     conn.Close();
-                    foreach (itemdb it in its)
-                    {
 
-                        MessageBox.Show(it.code);
-                    }
-
-
+                    this.Items_Load(sender, e);
                     this.InitializeComponent();
                     this.Refresh();
 
