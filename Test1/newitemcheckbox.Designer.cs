@@ -47,10 +47,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(274, 430);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Location = new System.Drawing.Point(548, 827);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(81, 34);
+            this.button1.Size = new System.Drawing.Size(162, 65);
             this.button1.TabIndex = 1;
             this.button1.Text = "Done";
             this.button1.UseVisualStyleBackColor = true;
@@ -58,10 +58,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(412, 430);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Location = new System.Drawing.Point(824, 827);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(81, 34);
+            this.button2.Size = new System.Drawing.Size(162, 65);
             this.button2.TabIndex = 2;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
@@ -94,10 +94,10 @@
             this.listView1.Cursor = System.Windows.Forms.Cursors.Default;
             this.listView1.DataSource = null;
             this.listView1.HasCollapsibleGroups = false;
-            this.listView1.Location = new System.Drawing.Point(6, 57);
-            this.listView1.Margin = new System.Windows.Forms.Padding(2);
+            this.listView1.Location = new System.Drawing.Point(12, 110);
+            this.listView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(772, 363);
+            this.listView1.Size = new System.Drawing.Size(1540, 694);
             this.listView1.TabIndex = 3;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.UseFiltering = true;
@@ -115,22 +115,26 @@
             // 
             this.Code.AspectName = "code";
             this.Code.Groupable = false;
+            this.Code.IsEditable = false;
             this.Code.Text = "Code";
             this.Code.Width = 187;
             // 
             // ItemName
             // 
             this.ItemName.AspectName = "name";
+            this.ItemName.IsEditable = false;
             this.ItemName.Text = "ItemName";
             // 
             // Supplier
             // 
             this.Supplier.AspectName = "supplier";
+            this.Supplier.IsEditable = false;
             this.Supplier.Text = "Supplier";
             // 
             // Type
             // 
             this.Type.AspectName = "type";
+            this.Type.IsEditable = false;
             this.Type.Text = "Type";
             // 
             // Qty
@@ -141,11 +145,13 @@
             // Qtyunit
             // 
             this.Qtyunit.AspectName = "qtyunit";
+            this.Qtyunit.IsEditable = false;
             this.Qtyunit.Text = "Quantity Unit";
             // 
             // Price
             // 
             this.Price.AspectName = "price";
+            this.Price.IsEditable = false;
             this.Price.Text = "Price";
             // 
             // EditablePrice
@@ -160,23 +166,23 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(128, 18);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox1.Location = new System.Drawing.Point(256, 35);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(194, 20);
+            this.textBox1.Size = new System.Drawing.Size(384, 31);
             this.textBox1.TabIndex = 4;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // newitemcheckbox
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(792, 521);
+            this.ClientSize = new System.Drawing.Size(1584, 1002);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "newitemcheckbox";
             this.Text = "newitemcheckbox";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.newitemcheckbox_FormClosing);

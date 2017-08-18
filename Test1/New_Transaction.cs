@@ -44,7 +44,60 @@ struct Transaction
         this.clientname = clientname;
     }
 }
+public struct Rep
+{
+    public long id;
+    public string repname;
+    public int numclient;
+    public string clientids;
+    public float totalsell;
 
+    public Rep(int id, string repname, int numclient, string clientids, float totalsell)
+    {
+        this.id = id;
+        this.repname = repname;
+        this.numclient = numclient;
+        this.clientids = clientids;
+        this.totalsell = totalsell;
+    }
+
+    public string Repname
+    {
+        set { }
+        get { return this.repname; }
+    }
+}
+
+public struct Client
+{
+    public long id;
+    string name;
+    public float totalsales;
+    public string itemsid;
+    public float cash;
+    public float debit;
+    public string mobi;
+    public string companyname;
+    public string companyadd;
+
+    public Client(long id, string name, float totalsales, string itemsid, float cash, float debit, string mobi, string companyname, string companyadd)
+    {
+        this.id = id;
+        this.name = name;
+        this.totalsales = totalsales;
+        this.itemsid = itemsid;
+        this.cash = cash;
+        this.debit = debit;
+        this.mobi = mobi;
+        this.companyname = companyname;
+        this.companyadd = companyadd;
+
+    }
+    public string Name
+    {
+        get { return this.name; }
+    }
+}
 namespace Test1
 {
     public partial class New_Transaction : Form

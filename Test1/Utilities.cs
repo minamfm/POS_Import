@@ -109,7 +109,7 @@ namespace Test1
             SqlConnection conn = new SqlConnection(GetConnectionString());
 
             string commandtrans = "insert into Transactions (date,clientid,totalsales,items,sellreturn,clientname) values ('" 
-                + trans.date + "','" + trans.clientid + "','" + trans.totalamount + "','" + trans.items + "','" + trans.sellreturn + "','" + trans.clientname +"')";
+                + trans.date + "','" + trans.clientid + "','" + trans.totalamount + "','" + trans.items + "','" + trans.sellreturn + "',N'" + trans.clientname +"')";
 
             List<Client> clients = GetAllClients();
 

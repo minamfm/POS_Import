@@ -28,22 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView1 = new System.Windows.Forms.ListView();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.button1 = new System.Windows.Forms.Button();
+            this.listView1 = new BrightIdeasSoftware.DataListView();
+            this.Apply = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.Code = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.ItemName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.Supplier = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.Qty = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            ((System.ComponentModel.ISupportInitialize)(this.listView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // listView1
-            // 
-            this.listView1.Location = new System.Drawing.Point(12, 422);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1420, 618);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // comboBox1
             // 
@@ -67,7 +65,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(1332, 163);
+            this.label2.Location = new System.Drawing.Point(1332, 311);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 42);
             this.label2.TabIndex = 3;
@@ -75,7 +73,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(779, 186);
+            this.textBox1.Location = new System.Drawing.Point(779, 323);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(483, 31);
             this.textBox1.TabIndex = 4;
@@ -85,6 +83,7 @@
             this.monthCalendar1.Location = new System.Drawing.Point(12, 66);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 5;
+            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
             // 
             // button1
             // 
@@ -95,34 +94,101 @@
             this.button1.TabIndex = 6;
             this.button1.Text = "طباعة و خروج";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // listView1
+            // 
+            this.listView1.AllColumns.Add(this.Apply);
+            this.listView1.AllColumns.Add(this.Code);
+            this.listView1.AllColumns.Add(this.ItemName);
+            this.listView1.AllColumns.Add(this.Supplier);
+            this.listView1.AllColumns.Add(this.Qty);
+            this.listView1.CellEditActivation = BrightIdeasSoftware.ObjectListView.CellEditActivateMode.SingleClick;
+            this.listView1.CellEditUseWholeCell = false;
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Apply,
+            this.Code,
+            this.ItemName,
+            this.Supplier,
+            this.Qty});
+            this.listView1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.listView1.DataSource = null;
+            this.listView1.HasCollapsibleGroups = false;
+            this.listView1.Location = new System.Drawing.Point(13, 449);
+            this.listView1.Margin = new System.Windows.Forms.Padding(4);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(1442, 499);
+            this.listView1.TabIndex = 9;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.UseFiltering = true;
+            this.listView1.View = System.Windows.Forms.View.List;
+            this.listView1.CellEditFinished += new BrightIdeasSoftware.CellEditEventHandler(this.listView1_CellEditFinished);
+            this.listView1.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.listView1_ItemChecked);
+            // 
+            // Apply
+            // 
+            this.Apply.AspectName = "item_checked";
+            this.Apply.CheckBoxes = true;
+            this.Apply.Text = "Apply";
+            // 
+            // Code
+            // 
+            this.Code.AspectName = "code";
+            this.Code.Groupable = false;
+            this.Code.IsEditable = false;
+            this.Code.Text = "Code";
+            this.Code.Width = 187;
+            // 
+            // ItemName
+            // 
+            this.ItemName.AspectName = "name";
+            this.ItemName.IsEditable = false;
+            this.ItemName.Text = "ItemName";
+            // 
+            // Supplier
+            // 
+            this.Supplier.AspectName = "supplier";
+            this.Supplier.IsEditable = false;
+            this.Supplier.Text = "Supplier";
+            // 
+            // Qty
+            // 
+            this.Qty.AspectName = "qty";
+            this.Qty.Text = "Quantity";
             // 
             // Permit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1468, 1203);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.listView1);
             this.Name = "Permit";
             this.Text = "Permit";
+            this.Load += new System.EventHandler(this.Permit_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.listView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.Button button1;
+        private BrightIdeasSoftware.DataListView listView1;
+        private BrightIdeasSoftware.OLVColumn Apply;
+        private BrightIdeasSoftware.OLVColumn Code;
+        private BrightIdeasSoftware.OLVColumn ItemName;
+        private BrightIdeasSoftware.OLVColumn Supplier;
+        private BrightIdeasSoftware.OLVColumn Qty;
     }
 }

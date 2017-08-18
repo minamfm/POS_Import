@@ -90,7 +90,8 @@ namespace Test1
 
         private void button6_Click(object sender, EventArgs e)
         {
-            
+            Permit per = new Permit();
+            per.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
