@@ -190,6 +190,7 @@ namespace Test1
                         conn.Close();
 
                         ExportDataTableToPdf(table, path, "Fady Co.,");
+                        this.Dispose();
 
 
                     }
